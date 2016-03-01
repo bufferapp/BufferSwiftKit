@@ -23,6 +23,13 @@
 		573D00D61C7143AC00A5DCE1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 573D00D51C7143AC00A5DCE1 /* Podfile */; };
 		573D00DB1C71517300A5DCE1 /* BufferAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D00DA1C71517300A5DCE1 /* BufferAPI.swift */; };
 		573D00DC1C7152FE00A5DCE1 /* BufferAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D00DA1C71517300A5DCE1 /* BufferAPI.swift */; };
+		57AC1C1F1C862C710048950E /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20CA1C862AC400E8A608 /* Update.swift */; };
+		57AC1C211C862C860048950E /* UpdateTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AC1C201C862C860048950E /* UpdateTestCase.swift */; };
+		57AC1C231C862CAA0048950E /* profile_updates_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 57AC1C221C862CAA0048950E /* profile_updates_success.json */; };
+		57AC1C251C862DA80048950E /* UpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AC1C241C862DA80048950E /* UpdatePage.swift */; };
+		57AC1C261C862DA80048950E /* UpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AC1C241C862DA80048950E /* UpdatePage.swift */; };
+		57AC1C281C862E790048950E /* single_update.json in Resources */ = {isa = PBXBuildFile; fileRef = 57AC1C271C862E790048950E /* single_update.json */; };
+		57AC1C291C862E790048950E /* single_update.json in Resources */ = {isa = PBXBuildFile; fileRef = 57AC1C271C862E790048950E /* single_update.json */; };
 		57BD20A31C81F2A200E8A608 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20A21C81F2A200E8A608 /* Utils.swift */; };
 		57BD20A61C82089E00E8A608 /* ProfileGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20A51C82089E00E8A608 /* ProfileGroup.swift */; };
 		57BD20AA1C820F7E00E8A608 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20A91C820F7E00E8A608 /* Profile.swift */; };
@@ -37,6 +44,12 @@
 		57BD20B81C83A59500E8A608 /* user_deauthorize_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 57BD20B71C83A59500E8A608 /* user_deauthorize_success.json */; };
 		57BD20BA1C83AAAB00E8A608 /* OperationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20B91C83AAAB00E8A608 /* OperationResult.swift */; };
 		57BD20BB1C83AC1400E8A608 /* OperationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20B91C83AAAB00E8A608 /* OperationResult.swift */; };
+		57BD20C21C8625ED00E8A608 /* ProfileSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20C11C8625ED00E8A608 /* ProfileSchedule.swift */; };
+		57BD20C41C86278800E8A608 /* ProfileTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20C31C86278800E8A608 /* ProfileTestCase.swift */; };
+		57BD20C61C8627E200E8A608 /* TestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20C51C8627E200E8A608 /* TestCase+Utils.swift */; };
+		57BD20C71C86284800E8A608 /* ProfileSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20C11C8625ED00E8A608 /* ProfileSchedule.swift */; };
+		57BD20C91C8628BD00E8A608 /* profile_schedules_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 57BD20C81C8628BD00E8A608 /* profile_schedules_success.json */; };
+		57BD20CB1C862AC400E8A608 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20CA1C862AC400E8A608 /* Update.swift */; };
 		766CD06391B47F1F67948F76 /* Pods_BufferKitDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B7FEF4CD8F145022E9419A /* Pods_BufferKitDemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +83,10 @@
 		573D00D31C71432E00A5DCE1 /* BufferKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BufferKit.podspec; path = ../BufferKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		573D00D51C7143AC00A5DCE1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		573D00DA1C71517300A5DCE1 /* BufferAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BufferAPI.swift; path = ../../BufferKit/BufferAPI.swift; sourceTree = "<group>"; };
+		57AC1C201C862C860048950E /* UpdateTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTestCase.swift; sourceTree = "<group>"; };
+		57AC1C221C862CAA0048950E /* profile_updates_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profile_updates_success.json; sourceTree = "<group>"; };
+		57AC1C241C862DA80048950E /* UpdatePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdatePage.swift; path = ../BufferKit/UpdatePage.swift; sourceTree = "<group>"; };
+		57AC1C271C862E790048950E /* single_update.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = single_update.json; sourceTree = "<group>"; };
 		57BD20A21C81F2A200E8A608 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../BufferKit/Utils.swift; sourceTree = "<group>"; };
 		57BD20A51C82089E00E8A608 /* ProfileGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileGroup.swift; path = ../BufferKit/ProfileGroup.swift; sourceTree = "<group>"; };
 		57BD20A91C820F7E00E8A608 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = ../BufferKit/Profile.swift; sourceTree = "<group>"; };
@@ -77,6 +94,11 @@
 		57BD20AE1C82294600E8A608 /* BufferClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BufferClient.swift; path = ../../BufferKit/BufferClient.swift; sourceTree = "<group>"; };
 		57BD20B71C83A59500E8A608 /* user_deauthorize_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_deauthorize_success.json; sourceTree = "<group>"; };
 		57BD20B91C83AAAB00E8A608 /* OperationResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OperationResult.swift; path = ../BufferKit/OperationResult.swift; sourceTree = "<group>"; };
+		57BD20C11C8625ED00E8A608 /* ProfileSchedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileSchedule.swift; path = ../BufferKit/ProfileSchedule.swift; sourceTree = "<group>"; };
+		57BD20C31C86278800E8A608 /* ProfileTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTestCase.swift; sourceTree = "<group>"; };
+		57BD20C51C8627E200E8A608 /* TestCase+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TestCase+Utils.swift"; sourceTree = "<group>"; };
+		57BD20C81C8628BD00E8A608 /* profile_schedules_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profile_schedules_success.json; sourceTree = "<group>"; };
+		57BD20CA1C862AC400E8A608 /* Update.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Update.swift; path = ../BufferKit/Update.swift; sourceTree = "<group>"; };
 		768C06FE09F3008D1AE2B746 /* Pods_BufferKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BufferKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D87B75DDBC85320A0348FF /* Pods-BufferKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BufferKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BufferKitDemo/Pods-BufferKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		ADC3D89BBBB8EF29F76C7AF0 /* Pods-BufferKitDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BufferKitDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BufferKitDemoTests/Pods-BufferKitDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +141,9 @@
 			children = (
 				5707DC041C7ABC4100F5D799 /* user_success.json */,
 				57BD20B71C83A59500E8A608 /* user_deauthorize_success.json */,
+				57BD20C81C8628BD00E8A608 /* profile_schedules_success.json */,
+				57AC1C221C862CAA0048950E /* profile_updates_success.json */,
+				57AC1C271C862E790048950E /* single_update.json */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -165,6 +190,9 @@
 				573D00C81C71430000A5DCE1 /* FileUtils.swift */,
 				5707DC061C7ABC4600F5D799 /* JSON */,
 				5707DC021C7ABBF600F5D799 /* UserTestCase.swift */,
+				57BD20C31C86278800E8A608 /* ProfileTestCase.swift */,
+				57BD20C51C8627E200E8A608 /* TestCase+Utils.swift */,
+				57AC1C201C862C860048950E /* UpdateTestCase.swift */,
 				573D00A91C71424200A5DCE1 /* Info.plist */,
 			);
 			path = BufferKitDemoTests;
@@ -176,8 +204,11 @@
 				5707DC0D1C7AC08C00F5D799 /* User.swift */,
 				57BD20A51C82089E00E8A608 /* ProfileGroup.swift */,
 				57BD20A91C820F7E00E8A608 /* Profile.swift */,
+				57BD20C11C8625ED00E8A608 /* ProfileSchedule.swift */,
 				57BD20AC1C821F6800E8A608 /* TeamMember.swift */,
 				57BD20B91C83AAAB00E8A608 /* OperationResult.swift */,
+				57BD20CA1C862AC400E8A608 /* Update.swift */,
+				57AC1C241C862DA80048950E /* UpdatePage.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -300,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57AC1C281C862E790048950E /* single_update.json in Resources */,
 				573D00D61C7143AC00A5DCE1 /* Podfile in Resources */,
 				573D009D1C71424200A5DCE1 /* LaunchScreen.storyboard in Resources */,
 				573D009A1C71424200A5DCE1 /* Assets.xcassets in Resources */,
@@ -314,6 +346,9 @@
 			files = (
 				5707DC051C7ABC4100F5D799 /* user_success.json in Resources */,
 				57BD20B81C83A59500E8A608 /* user_deauthorize_success.json in Resources */,
+				57AC1C231C862CAA0048950E /* profile_updates_success.json in Resources */,
+				57BD20C91C8628BD00E8A608 /* profile_schedules_success.json in Resources */,
+				57AC1C291C862E790048950E /* single_update.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				573D00951C71424200A5DCE1 /* ViewController.swift in Sources */,
+				57AC1C251C862DA80048950E /* UpdatePage.swift in Sources */,
 				57BD20AA1C820F7E00E8A608 /* Profile.swift in Sources */,
 				57BD20AF1C82294600E8A608 /* BufferClient.swift in Sources */,
 				57BD20AD1C821F6800E8A608 /* TeamMember.swift in Sources */,
@@ -425,8 +461,10 @@
 				5707DC081C7ABCFF00F5D799 /* MoyaBufferClient.swift in Sources */,
 				57BD20A61C82089E00E8A608 /* ProfileGroup.swift in Sources */,
 				57BD20A31C81F2A200E8A608 /* Utils.swift in Sources */,
+				57AC1C1F1C862C710048950E /* Update.swift in Sources */,
 				57BD20BB1C83AC1400E8A608 /* OperationResult.swift in Sources */,
 				573D00DB1C71517300A5DCE1 /* BufferAPI.swift in Sources */,
+				57BD20C21C8625ED00E8A608 /* ProfileSchedule.swift in Sources */,
 				5707DC0E1C7AC08C00F5D799 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,16 +473,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57BD20C61C8627E200E8A608 /* TestCase+Utils.swift in Sources */,
 				573D00DC1C7152FE00A5DCE1 /* BufferAPI.swift in Sources */,
 				5707DC031C7ABBF600F5D799 /* UserTestCase.swift in Sources */,
 				57BD20B01C82374A00E8A608 /* BufferClient.swift in Sources */,
 				57BD20B21C82375900E8A608 /* ProfileGroup.swift in Sources */,
 				573D00CD1C71430000A5DCE1 /* FileUtils.swift in Sources */,
+				57BD20C41C86278800E8A608 /* ProfileTestCase.swift in Sources */,
 				5707DC091C7ABCFF00F5D799 /* MoyaBufferClient.swift in Sources */,
 				57BD20B51C823A0E00E8A608 /* Utils.swift in Sources */,
 				57BD20B31C82375900E8A608 /* Profile.swift in Sources */,
+				57AC1C261C862DA80048950E /* UpdatePage.swift in Sources */,
 				57BD20BA1C83AAAB00E8A608 /* OperationResult.swift in Sources */,
 				57BD20B41C82375900E8A608 /* TeamMember.swift in Sources */,
+				57BD20CB1C862AC400E8A608 /* Update.swift in Sources */,
+				57BD20C71C86284800E8A608 /* ProfileSchedule.swift in Sources */,
+				57AC1C211C862C860048950E /* UpdateTestCase.swift in Sources */,
 				57BD20B11C82375900E8A608 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

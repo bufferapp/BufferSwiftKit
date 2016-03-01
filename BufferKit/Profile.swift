@@ -19,8 +19,8 @@ public struct Profile: Mappable {
     var formattedService: String?
     var formattedUsername: String?
     var id: String?
-    var scheduleDays:[String]?
-    var scheduleTimes:[String]?
+    var schedules:[ProfileSchedule]?
+
     var service: String?
     var serviceId: String?
     var serviceType: String?
@@ -43,8 +43,7 @@ public struct Profile: Mappable {
         formattedService <- map[Keys.formattedService]
         formattedUsername <- map[Keys.formattedUsername]
         id <- map[Keys.id]
-        scheduleDays <- map[Keys.scheduleDays]
-        scheduleTimes <- map[Keys.scheduleTimes]
+        schedules <- map[Keys.schedules]
         service <- map[Keys.service]
         serviceId <- map[Keys.serviceId]
         serviceType <- map[Keys.serviceType]
@@ -68,8 +67,7 @@ extension Profile {
         static let formattedService = "formatted_service"
         static let formattedUsername = "formatted_username"
         static let id = "id"
-        static let scheduleDays = "schedules.days"
-        static let scheduleTimes = "schedules.times"
+        static let schedules = "schedules"
         static let service = "service"
         static let serviceId = "service_id"
         static let serviceType = "service_type"

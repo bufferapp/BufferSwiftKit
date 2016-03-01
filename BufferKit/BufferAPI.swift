@@ -12,8 +12,13 @@ import Moya
 public enum BufferAPI: TargetType {
     case User
     case UserDeauthorize
+    
     case Profiles
     case Profile(String)
+    case ProfileSchedules(String)
+    
+    case UpdatesPendingForProfile(String)
+    case Update(String)
 }
 
 public extension BufferAPI {
@@ -26,8 +31,14 @@ public extension BufferAPI {
             return "/user/deauthorize.json"
         case .Profiles:
             return "/profiles.json"
-        case .Profile(let id):
-            return "/profiles/\(id).json"
+        case .Profile(let profileId):
+            return "/profiles/\(profileId).json"
+        case .ProfileSchedules(let profileId):
+            return "/profiles/\(profileId)/schedules.json"
+        case .UpdatesPendingForProfile(let profileId):
+            return "/profiles/\(profileId)/updates/pending.json"
+        case .Update(let updateId):
+            return "/updates/\(updateId).json"
         }
     }
     var method: Moya.Method {
@@ -38,7 +49,13 @@ public extension BufferAPI {
             return .POST
         case .Profiles:
             return .GET
-        case.Profile(_):
+        case .Profile(_):
+            return .GET
+        case .ProfileSchedules(_):
+            return .GET
+        case .UpdatesPendingForProfile(_):
+            return .GET
+        case .Update(_):
             return .GET
         }
     }

@@ -51,8 +51,20 @@ extension MoyaBufferClient: BufferClient {
         return self.requestArray(.Profiles, success: success, failure: failure)
     }
     
-    public func getProfile(id: String, success: (profile: Profile) -> Void, failure: FailureBlock) -> CancellableAction {
-        return self.requestObject(.Profile(id), success: success, failure: failure)
+    public func getProfile(profileId: String, success: (profile: Profile) -> Void, failure: FailureBlock) -> CancellableAction {
+        return self.requestObject(.Profile(profileId), success: success, failure: failure)
+    }
+    
+    public func getProfileSchedules(profileId: String, success: (schedules: [ProfileSchedule]) -> Void, failure: FailureBlock) -> CancellableAction {
+        return self.requestArray(.ProfileSchedules(profileId), success: success, failure: failure)
+    }
+    
+    public func getPendingUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+        return self.requestObject(.UpdatesPendingForProfile(profileId), success: success, failure: failure)
+    }
+    
+    public func getUpdate(updateId: String, success: (update: Update) -> Void, failure: FailureBlock) -> CancellableAction {
+        return self.requestObject(.Update(updateId), success: success, failure: failure)
     }
 }
 

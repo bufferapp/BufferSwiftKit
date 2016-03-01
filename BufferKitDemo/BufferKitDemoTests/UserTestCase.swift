@@ -17,7 +17,6 @@ class UserTestCase: XCTestCase {
         let httpClient = self.buildBufferClientSubWithResponse(jsonData)
         let expectedUser: User = self.mapDataToJSON(jsonData)
         
-        // Actual API usage
         httpClient.getUser({ (user) -> Void in
             XCTAssertNotNil(user)
             XCTAssert(expectedUser == user)
@@ -30,7 +29,6 @@ class UserTestCase: XCTestCase {
         let jsonData = BufferAPI.User.sampleData
         let httpClient = self.buildBufferClientSubWithResponse(jsonData)
         
-        // Actual API usage
         httpClient.getUser({ (user) -> Void in
             XCTFail("Error: It should have failed! \(user))")
         }) { (error) -> Void in
@@ -43,7 +41,6 @@ class UserTestCase: XCTestCase {
         let httpClient = self.buildBufferClientSubWithResponse(jsonData)
         let expectedResult: OperationResult = self.mapDataToJSON(jsonData)
         
-        // Actual API usage
         httpClient.deauthorizeUser({ (operationResult) -> Void in
             XCTAssertNotNil(operationResult)
             XCTAssert(expectedResult.success! == operationResult.success!)
@@ -52,19 +49,4 @@ class UserTestCase: XCTestCase {
         }
     }
 
-    func mapDataToJSON<T: Mappable>(data: NSData) -> T {
-        let json = String(data: data, encoding: NSUTF8StringEncoding)!
-        let expectedUser = Mapper<T>().map(json)!
-        return expectedUser
-    }
-
-    func buildBufferClientSubWithResponse(data: NSData) -> BufferClient {
-        let fakeEndpointsClosure = { (target: BufferAPI) -> Endpoint<BufferAPI> in
-            return Endpoint<BufferAPI>(URL: url(target), sampleResponseClosure: {.NetworkResponse(200, data)}, method: target.method, parameters: target.parameters)
-        }
-        let provider = MoyaProvider<BufferAPI>(endpointClosure: fakeEndpointsClosure, stubClosure: MoyaProvider.ImmediatelyStub)
-        let httpClient:BufferClient = MoyaBufferClient(provider: provider)
-        
-        return httpClient
-    }
 }
