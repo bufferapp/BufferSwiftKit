@@ -12,7 +12,7 @@ import ObjectMapper
 public struct Profile: Mappable {
 
     var avatar: String?
-    var created_at: NSDate?
+    var createdAt: NSDate?
     var coverPhoto: String?
     var defaultProfile: Bool?
     var disconnected: Bool?
