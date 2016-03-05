@@ -10,13 +10,13 @@ import Foundation
 import ObjectMapper
 
 struct ProfileGroup: Mappable {
-    
+
     var id: String?
     var name: String?
     var profileIds: [String]?
-    
+
     init?(_ map: Map) { }
-    
+
     mutating func mapping(map: Map) {
         id <- map[Keys.id]
         name <- map[Keys.name]

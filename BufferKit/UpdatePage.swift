@@ -12,9 +12,9 @@ import ObjectMapper
 public struct UpdatePage: Mappable {
     var total: Int?
     var updates: [Update]?
-    
+
     public init?(_ map: Map) { }
-    
+
     public mutating func mapping(map: Map) {
         total <- map[Keys.total]
         updates <- map[Keys.updates]

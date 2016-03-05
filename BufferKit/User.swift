@@ -11,23 +11,19 @@ import Foundation
 import ObjectMapper
 
 public struct User: Mappable {
-    
-    var _id: String?
+
     var activityAt: NSDate?
-    var created_at: NSDate?
+    var createdAt: NSDate?
     var id: String?
     var plan: String?
     var timezone: String?
-    
     var name: String?
     var profileGroups: [ProfileGroup]?
-    
     public init?(_ map: Map) { }
-    
+
     public mutating func mapping(map: Map) {
-        _id <- map[Keys._id]
         activityAt <- (map[Keys.activityAt], DateTransform())
-        created_at <- (map[Keys.createdAt], DateTransform())
+        createdAt <- (map[Keys.createdAt], DateTransform())
         id <- map[Keys.id]
         plan <- map[Keys.plan]
         timezone <- map[Keys.timezone]
@@ -38,7 +34,6 @@ public struct User: Mappable {
 
 extension User {
     struct Keys {
-        static let _id = "_id"
         static let activityAt = "activity_at"
         static let createdAt = "created_at"
         static let id = "id"
@@ -61,6 +56,6 @@ extension User: Equatable {
     }
 }
 
-public func ==(lhs:User, rhs:User) -> Bool {
+public func == (lhs:User, rhs:User) -> Bool {
     return lhs.equals(rhs)
 }

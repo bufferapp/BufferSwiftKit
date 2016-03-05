@@ -12,9 +12,9 @@ import ObjectMapper
 public struct OperationResult: Mappable {
     var success: Bool?
     var message: String?
-    
+
     public init?(_ map: Map) { }
-    
+
     public mutating func mapping(map: Map) {
         success <- map[Keys.success]
         message <- map[Keys.message]

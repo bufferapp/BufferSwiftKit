@@ -12,9 +12,9 @@ import ObjectMapper
 struct TeamMember: Mappable {
     var role: Int?
     var userId: String?
-    
+
     init?(_ map: Map) { }
-    
+
     mutating func mapping(map: Map) {
         role <- map[Keys.role]
         userId <- map[Keys.userId]

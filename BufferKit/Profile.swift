@@ -30,14 +30,14 @@ public struct Profile: Mappable {
     var timezone: String?
     var userId: String?
     var verb: String?
-    
-    
+
+
     public init?(_ map: Map) { }
-    
+
     public mutating func mapping(map: Map) {
         avatar <- map[Keys.avatar]
         coverPhoto <- map[Keys.coverPhoto]
-        created_at <- (map[Keys.createdAt], DateTransform())
+        createdAt <- (map[Keys.createdAt], DateTransform())
         defaultProfile <- map[Keys.defaultProfile]
         disconnected <- map[Keys.disconnected]
         formattedService <- map[Keys.formattedService]

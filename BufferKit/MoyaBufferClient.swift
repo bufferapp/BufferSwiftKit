@@ -11,25 +11,46 @@ import Moya
 import ObjectMapper
 
 public class MoyaBufferClient {
-    
+
     var provider: MoyaProvider<BufferAPI>
     private(set) var token: String?
 
-    public init(token: String) {
+    public init(token: String, debug: Bool = false) {
         self.token = token
 
-        let endpointClosure:(BufferAPI) -> Endpoint<BufferAPI> = { (target: BufferAPI) -> Endpoint<BufferAPI> in
-            var enhancedParameters:[String: AnyObject] = [:]
-            if let parameters = target.parameters {
-                enhancedParameters = parameters
+        let requestClosure = { (endpoint: Endpoint<BufferAPI>, done: NSURLRequest -> Void) in
+            let request = endpoint.urlRequest
+
+            let url = request.URL!
+            var newURL = url
+
+            if let _ = url.parameterString {
+                newURL = NSURL(string: "\(url.absoluteString)&\(MoyaBufferClient.Params.accessToken)=\(token)")!
+            } else {
+                newURL = NSURL(string: "\(url.absoluteString)?\(MoyaBufferClient.Params.accessToken)=\(token)")!
             }
-            // Append the token, always
-            enhancedParameters[MoyaBufferClient.Params.accessToken] = token
-            
-            let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
-            return Endpoint(URL: url, sampleResponseClosure: {.NetworkResponse(200, target.sampleData)}, method: target.method, parameters: enhancedParameters)
+
+            let newRequest = NSMutableURLRequest(URL: newURL)
+            newRequest.HTTPMethod = request.HTTPMethod!
+            newRequest.HTTPBody = request.HTTPBody
+
+            if let body = request.HTTPBody {
+                print(String(data: body, encoding: NSUTF8StringEncoding))
+            }
+            done(newRequest)
         }
-        self.provider = MoyaProvider<BufferAPI>(endpointClosure:endpointClosure)
+
+        self.provider = MoyaProvider<BufferAPI>(requestClosure: requestClosure)
+
+        if (debug) {
+            let plugin = NetworkLoggerPlugin(verbose: true)
+            let plugins:[PluginType] = [plugin]
+            self.provider = MoyaProvider<BufferAPI>(requestClosure:requestClosure, plugins: plugins)
+        } else {
+            self.provider = MoyaProvider<BufferAPI>(requestClosure:requestClosure)
+
+        }
+
     }
 
     public init(provider: MoyaProvider<BufferAPI>) {
@@ -42,30 +63,62 @@ extension MoyaBufferClient: BufferClient {
     public func getUser(success: (user: User) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.requestObject(.User, success: success, failure: failure)
     }
-    
+
     public func deauthorizeUser(success: (operationResult: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.requestObject(.UserDeauthorize, success: success, failure: failure)
     }
-    
+
     public func getProfiles(success: (profiles: [Profile]) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.requestArray(.Profiles, success: success, failure: failure)
     }
-    
+
     public func getProfile(profileId: String, success: (profile: Profile) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.requestObject(.Profile(profileId), success: success, failure: failure)
     }
-    
+
     public func getProfileSchedules(profileId: String, success: (schedules: [ProfileSchedule]) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.requestArray(.ProfileSchedules(profileId), success: success, failure: failure)
     }
-    
+
     public func getPendingUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
-        return self.requestObject(.UpdatesPendingForProfile(profileId), success: success, failure: failure)
+        return self.getPendingUpdates(profileId, page: nil, count: nil, since: nil, utc: nil, success: success, failure: failure)
     }
-    
+
+    public func getPendingUpdates(profileId: String, page: Int? = nil, count: Int? = nil, since: Int? = nil, utc: Bool? = nil, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdatesPendingForProfile(profileId, page: page, count: count, since: since, utc: utc)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
     public func getUpdate(updateId: String, success: (update: Update) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.requestObject(.Update(updateId), success: success, failure: failure)
     }
+
+    public func setPostingScheduleForProfile(profileId: String, schedules: [ProfileSchedule], success: (result: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction {
+
+        var parameters: [String: AnyObject] = [:]
+
+        // Build parameters of schedules with days and times only
+        for (index, schedule) in schedules.enumerate() {
+            if let days = schedule.days, times = schedule.times {
+                let daysKey = "schedules[\(index)][days]"
+                parameters[daysKey] = days
+                let timesKey = "schedules[\(index)][times]"
+                parameters[timesKey] = times
+            }
+        }
+
+        return self.requestObject(.ProfileSchedulesUpdate(profileId, parameters), success: success, failure: failure)
+    }
+
+    public func getSentUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdatesSentForProfile(profileId, page: page, count: count, since: since, utc: utc, filter: filter)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func getSentUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+        return self.getSentUpdates(profileId, page: nil, count: nil, since: nil, utc: nil, filter: nil, success: success, failure: failure)
+    }
+
 }
 
 // core methods for the moya client
@@ -80,10 +133,10 @@ extension MoyaBufferClient {
             }, failure: { (error) -> Void in
                 failure(error: error)
         })
-        
+
         return cancellable
     }
-    
+
     func requestObject<T: Mappable>(target: BufferAPI, success: (result: T) -> Void, failure: (error: BufferError) -> Void) -> CancellableAction {
         let cancellable = self.requestJSON(target, success: { (json) -> Void in
             if let result = Mapper<T>().map(json) {
@@ -94,10 +147,10 @@ extension MoyaBufferClient {
             }, failure: { (error) -> Void in
                 failure(error: error)
         })
-        
+
         return cancellable
     }
-    
+
     func requestJSON(target: BufferAPI, success: (json: AnyObject) -> Void, failure: (error: BufferError) -> Void) -> CancellableAction {
         let cancellable = self.provider.request(target, completion: { result in
             switch result {
@@ -128,11 +181,11 @@ extension MoyaBufferClient {
 // Cancel wrapper
 struct CancellableWrapper: CancellableAction {
     let cancellable: Cancellable
-    
+
     init(cancellable: Cancellable) {
         self.cancellable = cancellable
     }
-    
+
     func cancel() {
         self.cancellable.cancel()
     }
