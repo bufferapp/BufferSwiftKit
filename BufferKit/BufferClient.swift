@@ -13,6 +13,9 @@ import Foundation
 public typealias FailureBlock = (error: BufferError) -> Void
 public typealias SuccessBlock = (success: Bool, message: String)
 
+/**
+ Buffer Kit header comment
+*/
 public protocol BufferClient {
     func getUser(success: (user: User) -> Void, failure: FailureBlock) -> CancellableAction
     func deauthorizeUser(success: (operationResult: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction
