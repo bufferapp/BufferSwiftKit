@@ -73,11 +73,11 @@ extension MoyaBufferClient: BufferClient {
     }
 
     public func getProfile(profileId: String, success: (profile: Profile) -> Void, failure: FailureBlock) -> CancellableAction {
-        return self.requestObject(.Profile(profileId), success: success, failure: failure)
+        return self.requestObject(.Profile(profileId: profileId), success: success, failure: failure)
     }
 
     public func getProfileSchedules(profileId: String, success: (schedules: [ProfileSchedule]) -> Void, failure: FailureBlock) -> CancellableAction {
-        return self.requestArray(.ProfileSchedules(profileId), success: success, failure: failure)
+        return self.requestArray(.ProfileSchedules(profileId: profileId), success: success, failure: failure)
     }
 
     public func getPendingUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
@@ -85,12 +85,12 @@ extension MoyaBufferClient: BufferClient {
     }
 
     public func getPendingUpdates(profileId: String, page: Int? = nil, count: Int? = nil, since: Int? = nil, utc: Bool? = nil, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
-        let target: BufferAPI = .UpdatesPendingForProfile(profileId, page: page, count: count, since: since, utc: utc)
+        let target: BufferAPI = .UpdatesPendingForProfile(profileId: profileId, page: page, count: count, since: since, utc: utc)
         return self.requestObject(target, success: success, failure: failure)
     }
 
     public func getUpdate(updateId: String, success: (update: Update) -> Void, failure: FailureBlock) -> CancellableAction {
-        return self.requestObject(.Update(updateId), success: success, failure: failure)
+        return self.requestObject(.Update(updateId: updateId), success: success, failure: failure)
     }
 
     public func setPostingScheduleForProfile(profileId: String, schedules: [ProfileSchedule], success: (result: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction {
@@ -107,11 +107,11 @@ extension MoyaBufferClient: BufferClient {
             }
         }
 
-        return self.requestObject(.ProfileSchedulesUpdate(profileId, parameters), success: success, failure: failure)
+        return self.requestObject(.ProfileSchedulesUpdate(profileId: profileId, schedules: parameters), success: success, failure: failure)
     }
 
     public func getSentUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
-        let target: BufferAPI = .UpdatesSentForProfile(profileId, page: page, count: count, since: since, utc: utc, filter: filter)
+        let target: BufferAPI = .UpdatesSentForProfile(profileId: profileId, page: page, count: count, since: since, utc: utc, filter: filter)
         return self.requestObject(target, success: success, failure: failure)
     }
 
@@ -128,23 +128,53 @@ extension MoyaBufferClient: BufferClient {
         return self.getUpdateInteractions(updateId, event: event, page: nil, since: nil, before: nil, count: nil, success: success, failure: failure)
     }
 
-    public func reorderProfileUpdates(profileId: String, order: [String], offset: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction {
+    public func reorderProfileUpdates(profileId: String, order: [String], offset: Int?, utc: Bool?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction {
         let target: BufferAPI = .ProfileUpdatesReorder(profileId: profileId, order: order, offset: offset, utc: utc)
         return self.requestObject(target, success: success, failure: failure)
     }
 
-    public func shuffleProfileUpdates(profileId: String, count: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction {
+    public func shuffleProfileUpdates(profileId: String, count: Int?, utc: Bool?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction {
         let target: BufferAPI = .ProfileUpdatesShuffle(profileId: profileId, count: count, utc: utc)
         return self.requestObject(target, success: success, failure: failure)
     }
 
     public func createUpdate(profileIds: [String], text: String?, shorten: Bool?, now: Bool?, top: Bool?, media: [String : String]?, attachment: Bool?,
-        scheduledAt: String?, retweet: [String : String]?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction {
+        scheduledAt: String?, retweet: [String : String]?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction {
         let target: BufferAPI = .UpdateCreate(profileIds: profileIds, text: text, shorten: shorten, now: now, top: top,
             media: media, attachment: attachment, scheduledAt: scheduledAt, retweet: retweet)
         return self.requestObject(target, success: success, failure: failure)
     }
 
+    public func updateUpdate(updateId: String, text: String, now: Bool?, media: [String: String]?, utc: Bool?,
+        scheduledAt: String?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdateUpdate(updateId: updateId, text: text, now: now,
+                media: media, utc: utc, scheduledAt: scheduledAt)
+            return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func updateShare(updateId: String, success: (result: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdateShare(updateId: updateId)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func updateDestroy(updateId: String, success: (result: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdateDestroy(updateId: updateId)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func updateInteractionCreate(updateId: String, text: String, event: InteractionEvent, success: (singleUpdateResult: SingleUpdateResult) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdateInteractionsCreate(updateId: updateId, text: text, event: event.rawValue)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func linkShares(url: String, success: (linkInfo: LinkInfo) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .LinkShares(url: url)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func getInfoConfiguration(success: (configuration: Configuration) -> Void, failure: FailureBlock) -> CancellableAction {
+        return self.requestObject(.InfoConfiguration, success: success, failure: failure)
+    }
 }
 
 // core methods for the moya client

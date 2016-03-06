@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-public struct SuccessUpdate: Mappable {
+public struct UpdatesResult: Mappable {
 
     var success: Bool?
     var bufferCount: Int?
@@ -26,7 +26,7 @@ public struct SuccessUpdate: Mappable {
     }
 }
 
-extension SuccessUpdate {
+extension UpdatesResult {
     struct Keys {
         static let success = "success"
         static let bufferCount = "buffer_count"

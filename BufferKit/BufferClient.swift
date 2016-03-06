@@ -35,11 +35,25 @@ public protocol BufferClient {
     func getUpdateInteractions(updateId: String, event: InteractionEvent, page: Int?, since: Int?, before: Int?, count: Int?, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
     func getUpdateInteractions(updateId: String, event: InteractionEvent, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
 
-    func reorderProfileUpdates(profileId: String, order: [String], offset: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
-    func shuffleProfileUpdates(profileId: String, count: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
+    func reorderProfileUpdates(profileId: String, order: [String], offset: Int?, utc: Bool?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction
+    func shuffleProfileUpdates(profileId: String, count: Int?, utc: Bool?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction
 
     func createUpdate(profileIds: [String], text: String?, shorten: Bool?, now: Bool?, top: Bool?, media: [String: String]?, attachment: Bool?,
-        scheduledAt: String?, retweet: [String: String]?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
+        scheduledAt: String?, retweet: [String: String]?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction
+
+    func updateUpdate(updateId: String, text: String, now: Bool?, media: [String: String]?, utc: Bool?,
+        scheduledAt: String?, success: (updatesResult: UpdatesResult) -> Void, failure: FailureBlock) -> CancellableAction
+
+    func updateShare(updateId: String, success: (result: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction
+
+    func updateDestroy(updateId: String, success: (result: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction
+
+    func updateInteractionCreate(updateId: String, text: String, event: InteractionEvent, success: (singleUpdateResult: SingleUpdateResult) -> Void, failure: FailureBlock) -> CancellableAction
+
+    func linkShares(url: String, success: (linkInfo: LinkInfo) -> Void, failure: FailureBlock) -> CancellableAction
+
+    func getInfoConfiguration(success: (configuration: Configuration) -> Void, failure: FailureBlock) -> CancellableAction
+
 }
 
 public protocol CancellableAction {
