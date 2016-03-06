@@ -128,6 +128,16 @@ extension MoyaBufferClient: BufferClient {
         return self.getUpdateInteractions(updateId, event: event, page: nil, since: nil, before: nil, count: nil, success: success, failure: failure)
     }
 
+    public func reorderProfileUpdates(profileId: String, order: [String], offset: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .ProfileUpdatesReorder(profileId: profileId, order: order, offset: offset, utc: utc)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func shuffleProfileUpdates(profileId: String, count: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .ProfileUpdatesShuffle(profileId: profileId, count: count, utc: utc)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
 }
 
 // core methods for the moya client

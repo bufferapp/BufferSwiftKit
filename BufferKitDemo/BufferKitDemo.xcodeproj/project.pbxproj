@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		40835F7F7301672EBF855879 /* Pods_BufferKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 768C06FE09F3008D1AE2B746 /* Pods_BufferKitDemo.framework */; };
+		5701A1371C8CAFCD000354A2 /* SuccessUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701A1361C8CAFCD000354A2 /* SuccessUpdate.swift */; };
+		5701A1381C8CAFDD000354A2 /* SuccessUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5701A1361C8CAFCD000354A2 /* SuccessUpdate.swift */; };
 		5707DC031C7ABBF600F5D799 /* UserTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5707DC021C7ABBF600F5D799 /* UserTestCase.swift */; };
 		5707DC051C7ABC4100F5D799 /* user_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 5707DC041C7ABC4100F5D799 /* user_success.json */; };
 		5707DC081C7ABCFF00F5D799 /* MoyaBufferClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5707DC071C7ABCFF00F5D799 /* MoyaBufferClient.swift */; };
@@ -74,6 +76,7 @@
 /* Begin PBXFileReference section */
 		26B7FEF4CD8F145022E9419A /* Pods_BufferKitDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BufferKitDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DC2B22175D03F5C98C04CB4 /* Pods-BufferKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BufferKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BufferKitDemo/Pods-BufferKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5701A1361C8CAFCD000354A2 /* SuccessUpdate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuccessUpdate.swift; path = ../BufferKit/SuccessUpdate.swift; sourceTree = "<group>"; };
 		5707DC021C7ABBF600F5D799 /* UserTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTestCase.swift; sourceTree = "<group>"; };
 		5707DC041C7ABC4100F5D799 /* user_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user_success.json; sourceTree = "<group>"; };
 		5707DC071C7ABCFF00F5D799 /* MoyaBufferClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoyaBufferClient.swift; path = ../../BufferKit/MoyaBufferClient.swift; sourceTree = "<group>"; };
@@ -222,6 +225,7 @@
 				57BD20B91C83AAAB00E8A608 /* OperationResult.swift */,
 				57BD20CA1C862AC400E8A608 /* Update.swift */,
 				57AC1C241C862DA80048950E /* UpdatePage.swift */,
+				5701A1361C8CAFCD000354A2 /* SuccessUpdate.swift */,
 				575899551C8C685A008EB89C /* InteractionPage.swift */,
 				575899571C8C68C6008EB89C /* Interaction.swift */,
 				578197971C8C816D00A56A5C /* ErrorResult.swift */,
@@ -489,6 +493,7 @@
 				57BD20AD1C821F6800E8A608 /* TeamMember.swift in Sources */,
 				573D00931C71424200A5DCE1 /* AppDelegate.swift in Sources */,
 				5707DC081C7ABCFF00F5D799 /* MoyaBufferClient.swift in Sources */,
+				5701A1371C8CAFCD000354A2 /* SuccessUpdate.swift in Sources */,
 				57BD20A61C82089E00E8A608 /* ProfileGroup.swift in Sources */,
 				57BD20A31C81F2A200E8A608 /* Utils.swift in Sources */,
 				57AC1C1F1C862C710048950E /* Update.swift in Sources */,
@@ -513,6 +518,7 @@
 				5707DC031C7ABBF600F5D799 /* UserTestCase.swift in Sources */,
 				57BD20B01C82374A00E8A608 /* BufferClient.swift in Sources */,
 				57BD20B21C82375900E8A608 /* ProfileGroup.swift in Sources */,
+				5701A1381C8CAFDD000354A2 /* SuccessUpdate.swift in Sources */,
 				573D00CD1C71430000A5DCE1 /* FileUtils.swift in Sources */,
 				578197951C8C7CE600A56A5C /* Interaction.swift in Sources */,
 				57BD20C41C86278800E8A608 /* ProfileTestCase.swift in Sources */,

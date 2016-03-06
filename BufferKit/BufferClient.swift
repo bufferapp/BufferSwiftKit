@@ -35,6 +35,9 @@ public protocol BufferClient {
     func getUpdateInteractions(updateId: String, event: InteractionEvent, page: Int?, since: Int?, before: Int?, count: Int?, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
     func getUpdateInteractions(updateId: String, event: InteractionEvent, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
 
+    func reorderProfileUpdates(profileId: String, order: [String], offset: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
+    func shuffleProfileUpdates(profileId: String, count: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
+
 }
 
 public protocol CancellableAction {

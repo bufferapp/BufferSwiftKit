@@ -27,6 +27,9 @@ public enum BufferAPI: TargetType {
     case UpdatesSentForProfile(String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?)
     case UpdateInteractions(updateId: String, event: String, page: Int?, since: Int?, before: Int?, count: Int?)
 
+    case ProfileUpdatesReorder(profileId: String, order: [String], offset: Int?, utc: Bool?)
+    case ProfileUpdatesShuffle(profileId: String, count: Int?, utc: Bool?)
+
 }
 
 public extension BufferAPI {
@@ -54,6 +57,10 @@ public extension BufferAPI {
             return "/profiles/\(profileId)/updates/sent.json"
         case .UpdateInteractions(let updateId, _, _, _, _, _):
             return "/updates/\(updateId)/interactions.json"
+        case .ProfileUpdatesReorder(let profileId, _, _, _):
+            return "/profiles/\(profileId)/updates/reorder.json"
+        case .ProfileUpdatesShuffle(let profileId, _, _):
+            return "/profiles/\(profileId)/updates/shuffle"
         }
     }
 
@@ -79,6 +86,10 @@ public extension BufferAPI {
             return .GET
         case .UpdateInteractions(_, _, _, _, _, _):
             return .GET
+        case .ProfileUpdatesReorder(_, _, _, _):
+            return .POST
+        case .ProfileUpdatesShuffle(_, _, _):
+            return .POST
         }
     }
 
@@ -110,6 +121,19 @@ public extension BufferAPI {
                 "before": before,
                 "count": count
             ])
+            return filteredParams
+        case .ProfileUpdatesReorder(_, let order, let offset, let utc):
+            let filteredParams = self.filterOptionalParameters([
+                "order": order,
+                "offset": offset,
+                "utc": utc
+                ])
+            return filteredParams
+        case .ProfileUpdatesShuffle(_, let count, let utc):
+            let filteredParams = self.filterOptionalParameters([
+                "count": count,
+                "utc": utc
+                ])
             return filteredParams
         case .ProfileSchedulesUpdate(_, let schedules):
             return schedules
