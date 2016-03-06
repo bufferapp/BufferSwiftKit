@@ -138,6 +138,13 @@ extension MoyaBufferClient: BufferClient {
         return self.requestObject(target, success: success, failure: failure)
     }
 
+    public func createUpdate(profileIds: [String], text: String?, shorten: Bool?, now: Bool?, top: Bool?, media: [String : String]?, attachment: Bool?,
+        scheduledAt: String?, retweet: [String : String]?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdateCreate(profileIds: profileIds, text: text, shorten: shorten, now: now, top: top,
+            media: media, attachment: attachment, scheduledAt: scheduledAt, retweet: retweet)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
 }
 
 // core methods for the moya client

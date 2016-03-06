@@ -38,6 +38,8 @@ public protocol BufferClient {
     func reorderProfileUpdates(profileId: String, order: [String], offset: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
     func shuffleProfileUpdates(profileId: String, count: Int?, utc: Bool?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
 
+    func createUpdate(profileIds: [String], text: String?, shorten: Bool?, now: Bool?, top: Bool?, media: [String: String]?, attachment: Bool?,
+        scheduledAt: String?, retweet: [String: String]?, success: (successUpdate: SuccessUpdate) -> Void, failure: FailureBlock) -> CancellableAction
 }
 
 public protocol CancellableAction {

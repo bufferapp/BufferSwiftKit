@@ -30,6 +30,10 @@ public enum BufferAPI: TargetType {
     case ProfileUpdatesReorder(profileId: String, order: [String], offset: Int?, utc: Bool?)
     case ProfileUpdatesShuffle(profileId: String, count: Int?, utc: Bool?)
 
+    // https://buffer.com/developers/api/updates#updatescreate
+    case UpdateCreate(profileIds: [String], text: String?, shorten: Bool?, now: Bool?, top: Bool?,
+        media: [String: String]?, attachment: Bool?, scheduledAt: String?, retweet: [String: String]?)
+
 }
 
 public extension BufferAPI {
@@ -61,6 +65,8 @@ public extension BufferAPI {
             return "/profiles/\(profileId)/updates/reorder.json"
         case .ProfileUpdatesShuffle(let profileId, _, _):
             return "/profiles/\(profileId)/updates/shuffle"
+        case .UpdateCreate(_, _, _, _, _, _, _, _, _):
+            return "/updates/create"
         }
     }
 
@@ -89,6 +95,8 @@ public extension BufferAPI {
         case .ProfileUpdatesReorder(_, _, _, _):
             return .POST
         case .ProfileUpdatesShuffle(_, _, _):
+            return .POST
+        case .UpdateCreate(_, _, _, _, _, _, _, _, _):
             return .POST
         }
     }
@@ -133,6 +141,19 @@ public extension BufferAPI {
             let filteredParams = self.filterOptionalParameters([
                 "count": count,
                 "utc": utc
+                ])
+            return filteredParams
+        case .UpdateCreate(let profileIds, let text, let shorten, let now, let top, let media, let attachment, let scheduledAt, let retweet):
+            let filteredParams = self.filterOptionalParameters([
+                "profileIds": profileIds,
+                "text": text,
+                "shorten": shorten,
+                "now": now,
+                "top": top,
+                "media": media,
+                "attachment": attachment,
+                "scheduled_at": scheduledAt,
+                "retweet": retweet
                 ])
             return filteredParams
         case .ProfileSchedulesUpdate(_, let schedules):

@@ -45,5 +45,5 @@ variable_name:
     error: 60
 
 function_parameter_count:
-  warning: 10
-  error: 15
+  warning: 12
+  error: 16
