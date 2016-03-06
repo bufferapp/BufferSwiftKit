@@ -24,7 +24,7 @@ public class MoyaBufferClient {
             let url = request.URL!
             var newURL = url
 
-            if let _ = url.parameterString {
+            if let _ = url.query {
                 newURL = NSURL(string: "\(url.absoluteString)&\(MoyaBufferClient.Params.accessToken)=\(token)")!
             } else {
                 newURL = NSURL(string: "\(url.absoluteString)?\(MoyaBufferClient.Params.accessToken)=\(token)")!
@@ -119,12 +119,26 @@ extension MoyaBufferClient: BufferClient {
         return self.getSentUpdates(profileId, page: nil, count: nil, since: nil, utc: nil, filter: nil, success: success, failure: failure)
     }
 
+    public func getUpdateInteractions(updateId: String, event: InteractionEvent, page: Int?, since: Int?, before: Int?, count: Int?, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction {
+        let target: BufferAPI = .UpdateInteractions(updateId: updateId, event: event.rawValue, page: page, since: since, before: before, count: count)
+        return self.requestObject(target, success: success, failure: failure)
+    }
+
+    public func getUpdateInteractions(updateId: String, event: InteractionEvent, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction {
+        return self.getUpdateInteractions(updateId, event: event, page: nil, since: nil, before: nil, count: nil, success: success, failure: failure)
+    }
+
 }
 
 // core methods for the moya client
 extension MoyaBufferClient {
     func requestArray<T: Mappable>(target: BufferAPI, success: (result: [T]) -> Void, failure: (error: BufferError) -> Void) -> CancellableAction {
         let cancellable = self.requestJSON(target, success: { (json) -> Void in
+            if let error = self.jsonResponseAsError(json) {
+                failure(error: error)
+                return
+            }
+
             if let result:[T] = Mapper<T>().mapArray(json) {
                 success(result: result)
             } else {
@@ -139,13 +153,18 @@ extension MoyaBufferClient {
 
     func requestObject<T: Mappable>(target: BufferAPI, success: (result: T) -> Void, failure: (error: BufferError) -> Void) -> CancellableAction {
         let cancellable = self.requestJSON(target, success: { (json) -> Void in
+            if let error = self.jsonResponseAsError(json) {
+                failure(error: error)
+                return
+            }
+
             if let result = Mapper<T>().map(json) {
                 success(result: result)
             } else {
                 failure(error: BufferError.InvalidMapping(json: json))
             }
-            }, failure: { (error) -> Void in
-                failure(error: error)
+        }, failure: { (error) -> Void in
+            failure(error: error)
         })
 
         return cancellable
@@ -166,6 +185,25 @@ extension MoyaBufferClient {
             }
         })
         return CancellableWrapper(cancellable: cancellable)
+    }
+
+    func jsonResponseAsError(json: AnyObject) -> BufferError? {
+        if let result: ErrorResult = Mapper<ErrorResult>().map(json) {
+            if result.isValidError() {
+                return self.buildBufferErrorWith(result)
+            }
+        }
+        return nil
+    }
+
+    func buildBufferErrorWith(errorResult: ErrorResult) -> BufferError {
+        let errorMsg = errorResult.description
+        let userInfo = [
+            NSLocalizedDescriptionKey: errorMsg
+        ]
+        let error = NSError(domain: "domain", code: 1001, userInfo: userInfo)
+        let bufferError = BufferError.RequestFailure(cause: error)
+        return bufferError
     }
 }
 

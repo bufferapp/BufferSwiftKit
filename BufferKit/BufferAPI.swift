@@ -25,6 +25,8 @@ public enum BufferAPI: TargetType {
     case UpdatesPendingForProfile(String, page: Int?, count: Int?, since: Int?, utc: Bool?)
     case Update(String)
     case UpdatesSentForProfile(String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?)
+    case UpdateInteractions(updateId: String, event: String, page: Int?, since: Int?, before: Int?, count: Int?)
+
 }
 
 public extension BufferAPI {
@@ -49,7 +51,9 @@ public extension BufferAPI {
         case .Update(let updateId):
             return "/updates/\(updateId).json"
         case .UpdatesSentForProfile(let profileId, _, _, _, _, _):
-            return "/profiles/\(profileId)/updates/sent"
+            return "/profiles/\(profileId)/updates/sent.json"
+        case .UpdateInteractions(let updateId, _, _, _, _, _):
+            return "/updates/\(updateId)/interactions.json"
         }
     }
 
@@ -73,6 +77,8 @@ public extension BufferAPI {
             return .GET
         case .UpdatesSentForProfile(_, _, _, _, _, _):
             return .GET
+        case .UpdateInteractions(_, _, _, _, _, _):
+            return .GET
         }
     }
 
@@ -95,6 +101,16 @@ public extension BufferAPI {
                 "filter": filter
             ])
             return filteredParams
+
+        case .UpdateInteractions(_, let event, let page, let since, let before, let count):
+            let filteredParams = self.filterOptionalParameters([
+                "event": event,
+                "page": page,
+                "since": since,
+                "before": before,
+                "count": count
+            ])
+            return filteredParams
         case .ProfileSchedulesUpdate(_, let schedules):
             return schedules
         default:
@@ -110,6 +126,18 @@ public extension BufferAPI {
 
 internal extension BufferAPI {
     func filterOptionalParameters(optionalParameters:[String: AnyObject?]) -> [String: AnyObject]? {
-        return [:]
+        var nonOptionalParams: [String: AnyObject] = [:]
+
+        for (key, value) in optionalParameters {
+            if let value = value {
+                nonOptionalParams[key] = value
+            }
+        }
+
+        if nonOptionalParams.isEmpty {
+            return nil
+        }
+
+        return nonOptionalParams
     }
 }

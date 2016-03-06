@@ -29,9 +29,11 @@ public protocol BufferClient {
     func getPendingUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
 
     func getUpdate(updateId: String, success: (update: Update) -> Void, failure: FailureBlock) -> CancellableAction
-
     func getSentUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
     func getSentUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
+
+    func getUpdateInteractions(updateId: String, event: InteractionEvent, page: Int?, since: Int?, before: Int?, count: Int?, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
+    func getUpdateInteractions(updateId: String, event: InteractionEvent, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
 
 }
 

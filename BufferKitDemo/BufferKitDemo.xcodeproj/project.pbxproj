@@ -23,6 +23,14 @@
 		573D00D61C7143AC00A5DCE1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 573D00D51C7143AC00A5DCE1 /* Podfile */; };
 		573D00DB1C71517300A5DCE1 /* BufferAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D00DA1C71517300A5DCE1 /* BufferAPI.swift */; };
 		573D00DC1C7152FE00A5DCE1 /* BufferAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573D00DA1C71517300A5DCE1 /* BufferAPI.swift */; };
+		575899561C8C685A008EB89C /* InteractionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575899551C8C685A008EB89C /* InteractionPage.swift */; };
+		575899581C8C68C6008EB89C /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575899571C8C68C6008EB89C /* Interaction.swift */; };
+		5758995A1C8C7574008EB89C /* SocialNetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575899591C8C7574008EB89C /* SocialNetUser.swift */; };
+		578197951C8C7CE600A56A5C /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575899571C8C68C6008EB89C /* Interaction.swift */; };
+		578197961C8C7CE800A56A5C /* InteractionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575899551C8C685A008EB89C /* InteractionPage.swift */; };
+		578197981C8C816D00A56A5C /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578197971C8C816D00A56A5C /* ErrorResult.swift */; };
+		578197991C8CA3EE00A56A5C /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578197971C8C816D00A56A5C /* ErrorResult.swift */; };
+		5781979A1C8CAA2D00A56A5C /* SocialNetUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575899591C8C7574008EB89C /* SocialNetUser.swift */; };
 		57AC1C1F1C862C710048950E /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD20CA1C862AC400E8A608 /* Update.swift */; };
 		57AC1C211C862C860048950E /* UpdateTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AC1C201C862C860048950E /* UpdateTestCase.swift */; };
 		57AC1C231C862CAA0048950E /* profile_updates_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 57AC1C221C862CAA0048950E /* profile_updates_success.json */; };
@@ -83,6 +91,10 @@
 		573D00D31C71432E00A5DCE1 /* BufferKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BufferKit.podspec; path = ../BufferKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		573D00D51C7143AC00A5DCE1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		573D00DA1C71517300A5DCE1 /* BufferAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BufferAPI.swift; path = ../../BufferKit/BufferAPI.swift; sourceTree = "<group>"; };
+		575899551C8C685A008EB89C /* InteractionPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InteractionPage.swift; path = ../BufferKit/InteractionPage.swift; sourceTree = "<group>"; };
+		575899571C8C68C6008EB89C /* Interaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Interaction.swift; path = ../BufferKit/Interaction.swift; sourceTree = "<group>"; };
+		575899591C8C7574008EB89C /* SocialNetUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocialNetUser.swift; path = ../BufferKit/SocialNetUser.swift; sourceTree = "<group>"; };
+		578197971C8C816D00A56A5C /* ErrorResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorResult.swift; path = ../BufferKit/ErrorResult.swift; sourceTree = "<group>"; };
 		57AC1C201C862C860048950E /* UpdateTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTestCase.swift; sourceTree = "<group>"; };
 		57AC1C221C862CAA0048950E /* profile_updates_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = profile_updates_success.json; sourceTree = "<group>"; };
 		57AC1C241C862DA80048950E /* UpdatePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpdatePage.swift; path = ../BufferKit/UpdatePage.swift; sourceTree = "<group>"; };
@@ -202,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				5707DC0D1C7AC08C00F5D799 /* User.swift */,
+				575899591C8C7574008EB89C /* SocialNetUser.swift */,
 				57BD20A51C82089E00E8A608 /* ProfileGroup.swift */,
 				57BD20A91C820F7E00E8A608 /* Profile.swift */,
 				57BD20C11C8625ED00E8A608 /* ProfileSchedule.swift */,
@@ -209,6 +222,9 @@
 				57BD20B91C83AAAB00E8A608 /* OperationResult.swift */,
 				57BD20CA1C862AC400E8A608 /* Update.swift */,
 				57AC1C241C862DA80048950E /* UpdatePage.swift */,
+				575899551C8C685A008EB89C /* InteractionPage.swift */,
+				575899571C8C68C6008EB89C /* Interaction.swift */,
+				578197971C8C816D00A56A5C /* ErrorResult.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -477,7 +493,11 @@
 				57BD20A31C81F2A200E8A608 /* Utils.swift in Sources */,
 				57AC1C1F1C862C710048950E /* Update.swift in Sources */,
 				57BD20BB1C83AC1400E8A608 /* OperationResult.swift in Sources */,
+				5758995A1C8C7574008EB89C /* SocialNetUser.swift in Sources */,
 				573D00DB1C71517300A5DCE1 /* BufferAPI.swift in Sources */,
+				575899581C8C68C6008EB89C /* Interaction.swift in Sources */,
+				575899561C8C685A008EB89C /* InteractionPage.swift in Sources */,
+				578197981C8C816D00A56A5C /* ErrorResult.swift in Sources */,
 				57BD20C21C8625ED00E8A608 /* ProfileSchedule.swift in Sources */,
 				5707DC0E1C7AC08C00F5D799 /* User.swift in Sources */,
 			);
@@ -488,21 +508,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				57BD20C61C8627E200E8A608 /* TestCase+Utils.swift in Sources */,
+				578197991C8CA3EE00A56A5C /* ErrorResult.swift in Sources */,
 				573D00DC1C7152FE00A5DCE1 /* BufferAPI.swift in Sources */,
 				5707DC031C7ABBF600F5D799 /* UserTestCase.swift in Sources */,
 				57BD20B01C82374A00E8A608 /* BufferClient.swift in Sources */,
 				57BD20B21C82375900E8A608 /* ProfileGroup.swift in Sources */,
 				573D00CD1C71430000A5DCE1 /* FileUtils.swift in Sources */,
+				578197951C8C7CE600A56A5C /* Interaction.swift in Sources */,
 				57BD20C41C86278800E8A608 /* ProfileTestCase.swift in Sources */,
 				5707DC091C7ABCFF00F5D799 /* MoyaBufferClient.swift in Sources */,
 				57BD20B51C823A0E00E8A608 /* Utils.swift in Sources */,
 				57BD20B31C82375900E8A608 /* Profile.swift in Sources */,
+				578197961C8C7CE800A56A5C /* InteractionPage.swift in Sources */,
 				57AC1C261C862DA80048950E /* UpdatePage.swift in Sources */,
 				57BD20BA1C83AAAB00E8A608 /* OperationResult.swift in Sources */,
 				57BD20B41C82375900E8A608 /* TeamMember.swift in Sources */,
 				57BD20CB1C862AC400E8A608 /* Update.swift in Sources */,
 				57BD20C71C86284800E8A608 /* ProfileSchedule.swift in Sources */,
 				57AC1C211C862C860048950E /* UpdateTestCase.swift in Sources */,
+				5781979A1C8CAA2D00A56A5C /* SocialNetUser.swift in Sources */,
 				57BD20B11C82375900E8A608 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

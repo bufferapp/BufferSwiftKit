@@ -21,11 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = "1/66d3059be940cb137255ea5fdb0be4e5"
         self.client = MoyaBufferClient(token: token, debug: true)
     
-        let profileId = "5683bf9cf9f63ef902e8ee73"
-        
+//        let profileId = "5683bf9cf9f63ef902e8ee73"
 //        self.changeProfileSchedule(profileId)
+
+        let updateId = "56d9abb5020c676f02138d33"
         
-        self.getPendingUpdates(profileId)
+        self.getUpdateInteractions(updateId, event: InteractionEvent.Retweets)
         
         return true
     }
@@ -72,12 +73,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func getPendingUpdates(profileId: String) {
-        self.client.getPendingUpdates(profileId, success: { (udpatePage) -> Void in
+        self.client.getPendingUpdates(profileId, success: { (updatePage) -> Void in
             print("Yea!")
         }) { (error) -> Void in
             print(error)
         }
     }
-    
+
+    func getSentUpdates(profileId: String) {
+        self.client.getSentUpdates(profileId, success: { (updatePage) -> Void in
+            print("Yea!")
+         }, failure: { (error) -> Void in
+            print(error)
+        })
+    }
+
+    func getUpdateInteractions(updateId: String, event: InteractionEvent) {
+        self.client.getUpdateInteractions(updateId, event: event, success: { (interactionPage) -> Void in
+            print("Yea!")
+        }) { (error) -> Void in
+            print(error)
+        }
+    }
 }
 
