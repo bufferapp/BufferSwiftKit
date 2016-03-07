@@ -80,11 +80,11 @@ extension MoyaBufferClient: BufferClient {
         return self.requestArray(.ProfileSchedules(profileId: profileId), success: success, failure: failure)
     }
 
-    public func getPendingUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+    public func getPendingUpdates(profileId: String, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.getPendingUpdates(profileId, page: nil, count: nil, since: nil, utc: nil, success: success, failure: failure)
     }
 
-    public func getPendingUpdates(profileId: String, page: Int? = nil, count: Int? = nil, since: Int? = nil, utc: Bool? = nil, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+    public func getPendingUpdates(profileId: String, page: Int? = nil, count: Int? = nil, since: Int? = nil, utc: Bool? = nil, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
         let target: BufferAPI = .UpdatesPendingForProfile(profileId: profileId, page: page, count: count, since: since, utc: utc)
         return self.requestObject(target, success: success, failure: failure)
     }
@@ -110,12 +110,12 @@ extension MoyaBufferClient: BufferClient {
         return self.requestObject(.ProfileSchedulesUpdate(profileId: profileId, schedules: parameters), success: success, failure: failure)
     }
 
-    public func getSentUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+    public func getSentUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
         let target: BufferAPI = .UpdatesSentForProfile(profileId: profileId, page: page, count: count, since: since, utc: utc, filter: filter)
         return self.requestObject(target, success: success, failure: failure)
     }
 
-    public func getSentUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
+    public func getSentUpdates(profileId: String, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction {
         return self.getSentUpdates(profileId, page: nil, count: nil, since: nil, utc: nil, filter: nil, success: success, failure: failure)
     }
 

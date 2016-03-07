@@ -25,12 +25,12 @@ public protocol BufferClient {
     func getProfileSchedules(profileId: String, success: (schedules: [ProfileSchedule]) -> Void, failure: FailureBlock) -> CancellableAction
     func setPostingScheduleForProfile(profileId: String, schedules: [ProfileSchedule], success: (result: OperationResult) -> Void, failure: FailureBlock) -> CancellableAction
 
-    func getPendingUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
-    func getPendingUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
+    func getPendingUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
+    func getPendingUpdates(profileId: String, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
 
     func getUpdate(updateId: String, success: (update: Update) -> Void, failure: FailureBlock) -> CancellableAction
-    func getSentUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
-    func getSentUpdates(profileId: String, success: (udpatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
+    func getSentUpdates(profileId: String, page: Int?, count: Int?, since: Int?, utc: Bool?, filter: String?, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
+    func getSentUpdates(profileId: String, success: (updatePage: UpdatePage) -> Void, failure: FailureBlock) -> CancellableAction
 
     func getUpdateInteractions(updateId: String, event: InteractionEvent, page: Int?, since: Int?, before: Int?, count: Int?, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
     func getUpdateInteractions(updateId: String, event: InteractionEvent, success: (interactionPage: InteractionPage) -> Void, failure: FailureBlock) -> CancellableAction
