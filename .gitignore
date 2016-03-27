@@ -62,4 +62,6 @@ fastlane/screenshots
 
 .DS_Store
 
+# project specific
 BufferKitDemo/docs
+BufferKitDemo/iOSInjectionProject

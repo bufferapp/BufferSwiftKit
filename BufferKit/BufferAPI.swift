@@ -15,6 +15,8 @@ https://buffer.com/developers/api
 */
 public enum BufferAPI: TargetType {
 
+    static let AuthURL = "https://bufferapp.com/oauth2/authorize"
+
     // https://buffer.com/developers/api/user
     case User
     case UserDeauthorize

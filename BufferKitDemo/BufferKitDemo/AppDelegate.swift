@@ -9,6 +9,9 @@
 import UIKit
 import Moya
 import ObjectMapper
+import ChameleonFramework
+import OAuthSwift
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,83 +20,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var client: BufferClient!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        let token = "1/66d3059be940cb137255ea5fdb0be4e5"
-        self.client = MoyaBufferClient(token: token, debug: true)
-    
-//        let profileId = "5683bf9cf9f63ef902e8ee73"
-//        self.changeProfileSchedule(profileId)
 
-        let updateId = "56d9abb5020c676f02138d33"
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        let mainVC = self.setupMainViewController()
+        mainVC.automaticallyAdjustsScrollViewInsets = true
+        window?.rootViewController = mainVC
         
-        self.getUpdateInteractions(updateId, event: InteractionEvent.Retweets)
-        
+        LoginManager.setup(mainVC)
+        MainHUD.setup(mainVC.view)
+
+        Chameleon.setGlobalThemeUsingPrimaryColor(FlatNavyBlue(), withContentStyle: UIContentStyle.Contrast)
+
+        window!.makeKeyAndVisible()
+
         return true
     }
-    
-    
-    func getProfiles() {
-        self.client.getProfiles({ (profiles) -> Void in
-            print(profiles)
-        }) { (error) -> Void in
-            print(error)
+
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handleOpenURL(url)
         }
-    }
-    
-    func getSchedules(profileId: String) {
-        self.client.getProfileSchedules(profileId, success: { (schedules) -> Void in
-            print("oh yeah!")
-            }, failure: { (error) -> Void in
-                print("Oh no!")
-        })
-    }
-    
-    func changeProfileSchedule(profileId: String) {
-        var sched1:ProfileSchedule = ProfileSchedule(Map(mappingType: MappingType.FromJSON, JSONDictionary: [:]))!
-        sched1.days = ["mon", "tue", "wed", "thu", "fri"]
-        sched1.times = ["07:36", "20:36"]
-        
-        var sched2:ProfileSchedule = ProfileSchedule(Map(mappingType: MappingType.FromJSON, JSONDictionary: [:]))!
-        sched2.days = ["sat", "sun"]
-        sched2.times = ["10:00"]
-        
-        let schedules:[ProfileSchedule] = [
-            sched1,
-            sched2
-        ]
-        
-        self.client.setPostingScheduleForProfile(profileId, schedules: schedules, success: { (result) -> Void in
-            print("Yes")
-            
-            self.getSchedules(profileId)
-            
-            }) { (error) -> Void in
-                print("Oh no!")
-        }
-    }
-    
-    func getPendingUpdates(profileId: String) {
-        self.client.getPendingUpdates(profileId, success: { (updatePage) -> Void in
-            print("Yea!")
-        }) { (error) -> Void in
-            print(error)
-        }
+        return true
     }
 
-    func getSentUpdates(profileId: String) {
-        self.client.getSentUpdates(profileId, success: { (updatePage) -> Void in
-            print("Yea!")
-         }, failure: { (error) -> Void in
-            print(error)
-        })
-    }
+    func setupMainViewController() -> UIViewController {
+        let queueVC = QueueVC()
+        let leftMenuVC = LeftMenuVC()
+//        let rightMenuVC = RightMenuVC()
+        let nvc = UINavigationController(rootViewController: queueVC)
 
-    func getUpdateInteractions(updateId: String, event: InteractionEvent) {
-        self.client.getUpdateInteractions(updateId, event: event, success: { (interactionPage) -> Void in
-            print("Yea!")
-        }) { (error) -> Void in
-            print(error)
-        }
+        return SlideMenuController(mainViewController: nvc, leftMenuViewController: leftMenuVC)
     }
+    
 }
-

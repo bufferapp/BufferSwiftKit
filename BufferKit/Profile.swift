@@ -79,3 +79,13 @@ extension Profile {
         static let verb = "verb"
     }
 }
+
+extension Profile {
+    var summary: String {
+        if let service = formattedService, let username = formattedUsername {
+            return "\(service) - \(username)"
+        } else {
+            return "\(id)"
+        }
+    }
+}

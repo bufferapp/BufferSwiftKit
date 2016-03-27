@@ -4,12 +4,37 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'BufferKitDemo' do
+  # UI Layout
+  pod 'SteviaLayout'
+  # Colors and themes
+  pod 'ChameleonFramework/Swift'
+  # Font and icons
+  pod 'FontAwesome.swift'
+  # Side menu
+  pod 'SlideMenuControllerSwift'
+  # JSON <-> Object mapper
   pod 'ObjectMapper', '~> 1.1'
+  # Network abstraction layer over Alamofire
   pod 'Moya', '~> 6.2'
+  # OAuth 2.0
   pod 'OAuthSwift', '~> 0.5.0'
+  # Simple Promises
+  pod 'thenPromise'
+  # Progress HUD
+  pod 'JGProgressHUD'
+  # Empty data set
+  pod 'DZNEmptyDataSet'
 end
 
 target 'BufferKitDemoTests' do
   pod 'ObjectMapper', '~> 1.1'
   pod 'Moya', '~> 6.2'
 end
+
+plugin 'cocoapods-keys', {
+    :project => "BufferKitDemo",
+    :keys => [
+    "BufferAPIKey",
+    "BufferAPISecret"
+    ]
+}
