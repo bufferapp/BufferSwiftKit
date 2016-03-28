@@ -68,7 +68,7 @@ TODO: Explain about the oauth keys and where to change them (cocapods-keys).
 - [ ] Carthage support
 
 
-## Coding styel
+## Coding style
 
 We adhere to the [Raywenderlich Swift codeing style](https://github.com/raywenderlich/swift-style-guide).
 
