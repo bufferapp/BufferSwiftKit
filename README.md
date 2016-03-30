@@ -1,6 +1,4 @@
-![image](http://cl.ly/0U2E212I0a1E/logo.png)
- 
-BufferSwiftKit is a Swift based SDK to access the Buffer API. 
+**BufferSwiftKit** is a Swift based SDK to access the Buffer API. 
 The main goal is to provide a simple and easy interface to use Buffer in your iOS apps.
 
 ## Sample code
@@ -33,29 +31,50 @@ Currently, we support Xcode 7 and Swift 2.
 2. Create a Buffer developer account
 3. Setup the client and start using the Kit
 
-### Cocoapods
+### 1. Cocoapods
 
-Add the following line into you Podfile
+Add the following line into you Podfile:
 
 ```
 pod BufferSwiftKit
 ```
 
-### Buffer developer account
+adn do a ```pod install```
+
+### 2. Buffer developer account
 
 Go to https://buffer.com/developers/api and [create an app](https://buffer.com/developers/apps/create).
 
-When you complete the process you will have a 
+After completing the the process you receive the Client secret in your email. You'll need it configure OAuth 2.0.
 
-### Setup client
+The rest of the app information is located [here](https://buffer.com/developers/apps). Your application should loke similar to this:
 
-Inside your project configure the client 
+![image](http://cl.ly/03453V0E1I07/ss.png)
 
-You can use the token directly or use OAuth2.0. For this method please check the Sample project
+### 3. Setup client
+
+BufferKitClient just needs a token to interact with the API. So you could use the provided access token listed in the app's description for simple apps or use OAuth 2.0 to request for token associated with a particular user.
+
+* Single token method: Is simpler and is preferred while prototyping you awesome app :)
+* OAuth 2.0 token method: This is the recommended approach for your production app. To see an example of how to do it please check the Sample project section bellow.
 
 ## Sample project
 
-TODO: Explain about the oauth keys and where to change them (cocapods-keys).
+This projects uses cocapods-keys to store secrets. It you don't have it installed yet please do it bu running:
+```
+gem update cocoapods-keys
+```
+
+Obs.: If you don't use RVM then please run the above command with ```sudo```.
+
+After that just run:
+```
+pod install
+```
+
+And fill the secrets when they are asked.
+
+At this point you should be able to build and run the sample project. Check ```AuthManager.swift``` for implementation details/
 
 ## Featutes
 
