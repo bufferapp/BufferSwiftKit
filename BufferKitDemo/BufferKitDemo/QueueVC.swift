@@ -8,10 +8,8 @@
 
 import UIKit
 import SteviaLayout
-import SlideMenuControllerSwift
 import ChameleonFramework
 import FontAwesome_swift
-
 import DZNEmptyDataSet
 
 class QueueVC: UIViewController {
@@ -49,6 +47,14 @@ class QueueVC: UIViewController {
         tableView = queueView.tableView
         tableView.delegate = self
         tableView.dataSource = self
+
+        let button = UIButton(type: UIButtonType.Custom)
+        let barsImage = UIImage.fontAwesomeIconWithName(.Bars, textColor: UIColor.blackColor(), size: CGSizeMake(30, 30))
+        button.setImage(barsImage, forState: UIControlState.Normal)
+        button.addTarget(self, action: #selector(QueueVC.selectProfileAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        button.frame = CGRectMake(0, 0, 30, 30)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: button)
+
         self.view = queueView
     }
 
@@ -58,18 +64,11 @@ class QueueVC: UIViewController {
         tableView.reloadData()
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setNavigationBarItem()
-    }
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if AuthManager.sharedManager.authenticated {
             MainHUD.showMsg("Fetching profiles")
             BufferKitManager.sharedInstance.fetchProfiles()
-        } else {
-            LoginManager.sharedManager.presentLoginVCIfNecessary()
         }
     }
 
@@ -88,6 +87,11 @@ class QueueVC: UIViewController {
             let y = rect.size.height + rect.origin.y
             self.tableView.contentInset = UIEdgeInsetsMake(y, 0, 0, 0)
         }
+    }
+
+    func selectProfileAction(sender: UITabBarItem) {
+        let profileMenuVC = ProfileMenuVC()
+        presentViewController(UINavigationController(rootViewController: profileMenuVC), animated: true, completion: nil)
     }
 }
 

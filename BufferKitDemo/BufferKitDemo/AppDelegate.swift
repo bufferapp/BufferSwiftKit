@@ -10,8 +10,6 @@ import UIKit
 import Moya
 import ObjectMapper
 import ChameleonFramework
-import OAuthSwift
-import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,34 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        let mainVC = self.setupMainViewController()
-        mainVC.automaticallyAdjustsScrollViewInsets = true
-        window?.rootViewController = mainVC
+        let queueVC = QueueVC()
+        window?.rootViewController = UINavigationController(rootViewController: queueVC)
         
-        LoginManager.setup(mainVC)
-        MainHUD.setup(mainVC.view)
+        MainHUD.setup(queueVC.view)
 
         Chameleon.setGlobalThemeUsingPrimaryColor(FlatNavyBlue(), withContentStyle: UIContentStyle.Contrast)
+
+        AuthManager.sharedManager.accessToken = "INSERT ACCESS TOKEN HERE"
 
         window!.makeKeyAndVisible()
 
         return true
     }
 
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        if (url.host == "oauth-callback") {
-            OAuthSwift.handleOpenURL(url)
-        }
-        return true
-    }
-
-    func setupMainViewController() -> UIViewController {
-        let queueVC = QueueVC()
-        let leftMenuVC = LeftMenuVC()
-//        let rightMenuVC = RightMenuVC()
-        let nvc = UINavigationController(rootViewController: queueVC)
-
-        return SlideMenuController(mainViewController: nvc, leftMenuViewController: leftMenuVC)
-    }
-    
 }

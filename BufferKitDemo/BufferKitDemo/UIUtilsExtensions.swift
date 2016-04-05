@@ -16,18 +16,3 @@ extension UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
 }
-
-extension UIViewController {
-
-    func setNavigationBarItem() {
-        let barsImage = UIImage.fontAwesomeIconWithName(.Bars, textColor: UIColor.blackColor(), size: CGSizeMake(30, 30))
-        self.addLeftBarButtonWithImage(barsImage)
-        self.slideMenuController()?.removeLeftGestures()
-        self.slideMenuController()?.addLeftGestures()
-    }
-
-    func removeNavigationBarItem() {
-        self.navigationItem.leftBarButtonItem = nil
-        self.slideMenuController()?.removeLeftGestures()
-    }
-}

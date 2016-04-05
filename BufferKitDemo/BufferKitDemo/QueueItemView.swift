@@ -42,7 +42,5 @@ class QueueItemView: UITableViewCell {
             updateText.attributedText = NSAttributedString(string: text, attributes: attributes)
         }
     }
-
-    
     
 }

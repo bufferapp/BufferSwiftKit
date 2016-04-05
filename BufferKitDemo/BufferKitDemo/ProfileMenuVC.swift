@@ -1,5 +1,5 @@
 //
-//  LeftMenuVC.swift
+//  ProfileMenuVC.swift
 //  BufferKitDemo
 //
 //  Created by Humberto Aquino on 3/22/16.
@@ -9,7 +9,7 @@
 import UIKit
 import JGProgressHUD
 
-class LeftMenuVC: UIViewController {
+class ProfileMenuVC: UIViewController {
 
     let HUD = JGProgressHUD(style: .Dark)
     
@@ -32,7 +32,7 @@ class LeftMenuVC: UIViewController {
         
         setupView()
 
-        navigationItem.title = "Queue"
+        navigationItem.title = "Select a Profile"
 
         on("INJECTION_BUNDLE_NOTIFICATION") {
             self.setupView()
@@ -42,7 +42,7 @@ class LeftMenuVC: UIViewController {
 
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl?.addTarget(self, action: #selector(LeftMenuVC.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl?.addTarget(self, action: #selector(ProfileMenuVC.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
     }
 
@@ -60,7 +60,15 @@ class LeftMenuVC: UIViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: FooterCellIdentifier)
     }
 
+    override func viewWillAppear(animated: Bool) {
+        refreshProfiles()
+    }
+
     func profilesUpdated(notificaiton: NSNotification) {
+        refreshProfiles()
+    }
+
+    func refreshProfiles() {
         self.profiles = BufferKitManager.sharedInstance.profiles
         self.tableView.reloadData()
         refreshControl.endRefreshing()
@@ -77,12 +85,12 @@ class LeftMenuVC: UIViewController {
     func swithToProfile(profile: Profile) {
         MainHUD.showMsg("Fetching \(profile.summary)")
         BufferKitManager.sharedInstance.fetchUpdatesForProfile(profile)
-        tableView.reloadData() // To refresh the selected profile 
-        self.slideMenuController()?.closeLeft()
+        tableView.reloadData() // To refresh the selected profile
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 
-extension LeftMenuVC: UITableViewDataSource {
+extension ProfileMenuVC: UITableViewDataSource {
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -93,19 +101,13 @@ extension LeftMenuVC: UITableViewDataSource {
         case Section.Content:
             // Profile list
             return profiles?.count ?? 0
-        case Section.Footer:
-            // Logout
-            return 1
+        default:
+            return 0
         }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch Section.init(rawValue: indexPath.section)! {
-        case Section.Content:
-            return cellForContentOn(indexPath)
-        case Section.Footer:
-            return cellForFooterOn(indexPath)
-        }
+        return cellForContentOn(indexPath)
     }
 
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -121,8 +123,8 @@ extension LeftMenuVC: UITableViewDataSource {
         switch Section.init(rawValue: section)! {
         case Section.Content:
             return 40
-        case Section.Footer:
-            return 20
+        default:
+            return 0
         }
     }
 
@@ -156,58 +158,17 @@ extension LeftMenuVC: UITableViewDataSource {
         return cell
     }
 
-    func cellForFooterOn(indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(FooterCellIdentifier, forIndexPath: indexPath)
-        if AuthManager.sharedManager.authenticated {
-            cell.selectionStyle = .None
-        } else {
-            cell.selectionStyle = .Default
-        }
-
-        cell.textLabel?.text = "Logout"
-        return cell
-    }
-
-
 }
 
-extension LeftMenuVC: UITableViewDelegate {
+extension ProfileMenuVC: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch Section.init(rawValue: indexPath.section)! {
         case Section.Content:
             let profile = profiles[indexPath.row]
             swithToProfile(profile)
-        case Section.Footer:
-            logoutAction()
+        default:
+            break
         }
     }
 }
 
-// actions
-extension LeftMenuVC {
-    func logoutAction() {
-        MainHUD.showMsg("Logging out")
-
-        self.slideMenuController()?.closeLeft()
-        
-        // Present HUD
-        BufferKitManager.sharedInstance.logout() { (success, error) in
-            if success {
-                self.wipeAuthAndNotify()
-                MainHUD.hide()
-            } else {
-                MainHUD.hide()
-                // Present message
-                self.showErrorMsg("Failed to logout", message: "Error: \(error!)") { (alert) in
-                    self.wipeAuthAndNotify()
-                }
-            }
-        }
-    }
-
-    func wipeAuthAndNotify() {
-        AuthManager.sharedManager.logout()
-        BufferKitManager.sharedInstance.reset()
-        NSNotificationCenter.defaultCenter().postNotificationName(Notification.Auth.SuccessfulLogout, object: nil)
-    }
-}

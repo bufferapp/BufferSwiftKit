@@ -26,7 +26,4 @@ struct Notification {
         static let UpdateFailed = "bsk.notification.update.updateFailed"
     }
 
-    struct Unexpected {
-       
-    }
 }
