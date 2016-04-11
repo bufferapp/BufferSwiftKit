@@ -83,20 +83,19 @@ BufferKitClient just needs a token to interact with the API. So, you could use t
 
 ## Demo porject
 
-To use the demo project you'll need to clone the repo and setup its dependencies.
+To use the demo project you just have to open it:
 
 ```
-carthage update --platform iOS
+open Demo/BufferSwiftKit\ Demo.xcworkspace
 ```
 
-Then, open the workspace
+And add the token string in the AppDelegate file. The line to change will look like this:
 
 ```
-open BufferSwiftKit.xcworkspace
+ AuthManager.sharedManager.accessToken = "Insert token here"
 ```
 
-And build BufferSwiftKit. You can do that by selecting the 'BufferSwiftKit iOS' schema, then 'Product' and finally 'Build'.
-After that you'll just need to select 'BufferSwiftKit Demo' schema and run it (cmd+r).
+After that the demo project should be able to run :)
 
 
 ## Features
