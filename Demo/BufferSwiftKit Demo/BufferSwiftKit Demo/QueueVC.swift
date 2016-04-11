@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Stevia
-import Chameleon
+import SteviaLayout
+import ChameleonFramework
 import DZNEmptyDataSet
 import BufferSwiftKit
 

@@ -3,6 +3,15 @@ platform :ios, '9.0'
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-target 'BufferSwiftKit Demo' do
+inhibit_all_warnings!
 
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/bufferapp/buffer-cocoapod-specs.git'
+
+target 'BufferSwiftKit Demo' do
+  pod 'BufferSwiftKit'
+  pod 'JGProgressHUD'
+  pod 'ChameleonFramework/Swift'
+  pod 'SteviaLayout'
+  pod 'DZNEmptyDataSet'
 end

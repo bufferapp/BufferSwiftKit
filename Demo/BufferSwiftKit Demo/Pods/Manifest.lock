@@ -1,0 +1,38 @@
+PODS:
+  - Alamofire (3.3.1)
+  - BufferSwiftKit (0.0.1):
+    - Moya
+    - ObjectMapper
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - DZNEmptyDataSet (1.7.3)
+  - JGProgressHUD (1.3.1)
+  - Moya (6.4.0):
+    - Moya/Core (= 6.4.0)
+  - Moya/Core (6.4.0):
+    - Alamofire (~> 3.0)
+    - Result (~> 2.0)
+  - ObjectMapper (1.2.0)
+  - Result (2.0.0)
+  - SteviaLayout (2.1.2)
+
+DEPENDENCIES:
+  - BufferSwiftKit
+  - ChameleonFramework/Swift
+  - DZNEmptyDataSet
+  - JGProgressHUD
+  - SteviaLayout
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  BufferSwiftKit: 24fbe262269f70794e230f4af12c758f77ecc5cf
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
+  JGProgressHUD: 153053a21d81208cb5f659691996bcefce6a9885
+  Moya: 4d526954c8afd79820991393d40d7d8af756ceee
+  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  SteviaLayout: dd483467f2e9ff3b5922531d6c5e96e60b2c4633
+
+COCOAPODS: 0.39.0

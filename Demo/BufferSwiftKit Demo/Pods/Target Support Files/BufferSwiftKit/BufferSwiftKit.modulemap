@@ -1,0 +1,6 @@
+framework module BufferSwiftKit {
+  umbrella header "BufferSwiftKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

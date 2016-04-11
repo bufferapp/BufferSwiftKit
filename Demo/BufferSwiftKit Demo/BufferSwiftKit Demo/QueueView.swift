@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Stevia
+import SteviaLayout
 
 class QueueView: UIView {
 

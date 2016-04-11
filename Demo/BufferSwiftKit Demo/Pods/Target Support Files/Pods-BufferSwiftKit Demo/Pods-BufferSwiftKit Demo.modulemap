@@ -1,0 +1,6 @@
+framework module Pods_BufferSwiftKit_Demo {
+  umbrella header "Pods-BufferSwiftKit Demo-umbrella.h"
+
+  export *
+  module * { export * }
+}

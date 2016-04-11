@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 import ObjectMapper
-import Chameleon
+import ChameleonFramework
 import BufferSwiftKit
 
 @UIApplicationMain
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Chameleon.setGlobalThemeUsingPrimaryColor(FlatNavyBlue(), withContentStyle: UIContentStyle.Contrast)
 
-        AuthManager.sharedManager.accessToken = "Insert Token here"
+        AuthManager.sharedManager.accessToken = "Insert token here"
 
         window!.makeKeyAndVisible()
         
