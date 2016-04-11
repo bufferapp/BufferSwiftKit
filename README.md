@@ -40,13 +40,13 @@ Currently, we support Xcode 7 and Swift 2.
 ### 1. Install
 
 #### Cocoapods
-Add the following line into you ```Podfile```:
+Add the following line into your ```Podfile```:
 
 ```
 pod BufferSwiftKit
 ```
 
-adn do a ```pod install```
+Then run ```pod install```
 
 #### Carthage
 
@@ -68,20 +68,20 @@ Then just import the framework ```Carthage/Build``` depending on the platform of
 
 Go to https://buffer.com/developers/api and [create an app](https://buffer.com/developers/apps/create).
 
-After completing the the process you receive the Client secret in your email. You'll need it configure OAuth 2.0.
+After completing the the process you receive the Client secret in your email. You'll need it configure OAuth 2.0 👍.
 
-The rest of the app information is located [here](https://buffer.com/developers/apps). Your application should loke similar to this:
+The rest of the app information is located [here](https://buffer.com/developers/apps). Your application should look similar to this:
 
 ![image](http://cl.ly/03453V0E1I07/ss.png)
 
 ### 3. Setup client
 
-BufferKitClient just needs a token to interact with the API. So you could use the provided access token listed in the app's description for simple apps or use OAuth 2.0 to request for token associated with a particular user.
+BufferKitClient just needs a token to interact with the API. So, you could use the provided access token listed in the app's description for simple apps. Or, you can use OAuth 2.0 to request for a token associated with a particular user.
 
-* Single token method: Is simpler and is preferred while prototyping you awesome app :)
-* OAuth 2.0 token method: This is the recommended approach for production apps. Libraries like [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) and [OAuth2](https://github.com/p2/OAuth2) are recommended for this method.
+* Single token method: Is simpler and is preferred while prototyping your awesome app 🎉📱😄!
+* OAuth 2.0 token method: This is the recommended approach for production apps. Libraries like [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) and [OAuth2](https://github.com/p2/OAuth2) are recommended if you use this method.
 
-## Featutes
+## Features
 
 - [x] Callback based API support for iOS
 - [x] Swift 2 support
@@ -93,7 +93,7 @@ BufferKitClient just needs a token to interact with the API. So you could use th
 
 ## Coding style
 
-We adhere to the [Raywenderlich Swift codeing style](https://github.com/raywenderlich/swift-style-guide).
+We adhere to the [Raywenderlich Swift coding style](https://github.com/raywenderlich/swift-style-guide).
 
 ## ChangeLog
 
