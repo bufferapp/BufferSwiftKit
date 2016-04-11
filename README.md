@@ -1,4 +1,4 @@
-**BufferSwiftKit** is a Swift based SDK to access the Buffer API. 
+**BufferSwiftKit** is a Swift based SDK to access the Buffer API.
 The main goal is to provide a simple and easy interface to use Buffer in your iOS apps.
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -14,7 +14,7 @@ The main goal is to provide a simple and easy interface to use Buffer in your iO
 // Can get the token from https://buffer.com/developers/api
 // Or use OAuth 2.0. See the demo project for a sample
 
-let token = "...." 
+let token = "...."
 
 self.bufferClient = MoyaBufferClient(token: token)
 
@@ -56,7 +56,7 @@ Add the following line to your ```Cartfile```:
 github bufferapp/BufferSwiftKit
 ```
 
-Run carthage 
+Run carthage
 
 ```
 carthage update BufferSwiftKit
@@ -80,6 +80,24 @@ BufferKitClient just needs a token to interact with the API. So, you could use t
 
 * Single token method: Is simpler and is preferred while prototyping your awesome app 🎉📱😄!
 * OAuth 2.0 token method: This is the recommended approach for production apps. Libraries like [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) and [OAuth2](https://github.com/p2/OAuth2) are recommended if you use this method.
+
+## Demo porject
+
+To use the demo project you'll need to clone the repo and setup its dependencies.
+
+```
+carthage update --platform iOS
+```
+
+Then, open the workspace
+
+```
+open BufferSwiftKit.xcworkspace
+```
+
+And build BufferSwiftKit. You can do that by selecting the 'BufferSwiftKit iOS' schema, then 'Product' and finally 'Build'.
+After that you'll just need to select 'BufferSwiftKit Demo' schema and run it (cmd+r).
+
 
 ## Features
 
