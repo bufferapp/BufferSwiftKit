@@ -1,6 +1,12 @@
 **BufferSwiftKit** is a Swift based SDK to access the Buffer API. 
 The main goal is to provide a simple and easy interface to use Buffer in your iOS apps.
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Cocoapods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org/)
+[![Platforms](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20watchos%7C%20tvos-lightgray.svg)]()
+[![GitHub release](https://img.shields.io/badge/release-0.0.6-blue.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
+
 ## Sample code
 
 ```swift
@@ -27,19 +33,36 @@ Currently, we support Xcode 7 and Swift 2.
 
 ## How to get started
 
-1. Install Bufferkit pod in your project
+1. Install BufferSwiftkit in your project
 2. Create a Buffer developer account
 3. Setup the client and start using the Kit
 
-### 1. Cocoapods
+### 1. Install
 
-Add the following line into you Podfile:
+#### Cocoapods
+Add the following line into you ```Podfile```:
 
 ```
 pod BufferSwiftKit
 ```
 
 adn do a ```pod install```
+
+#### Carthage
+
+Add the following line to your ```Cartfile```:
+
+```
+github bufferapp/BufferSwiftKit
+```
+
+Run carthage 
+
+```
+carthage update BufferSwiftKit
+```
+
+Then just import the framework ```Carthage/Build``` depending on the platform of your app.
 
 ### 2. Buffer developer account
 
@@ -56,36 +79,17 @@ The rest of the app information is located [here](https://buffer.com/developers/
 BufferKitClient just needs a token to interact with the API. So you could use the provided access token listed in the app's description for simple apps or use OAuth 2.0 to request for token associated with a particular user.
 
 * Single token method: Is simpler and is preferred while prototyping you awesome app :)
-* OAuth 2.0 token method: This is the recommended approach for your production app. To see an example of how to do it please check the Sample project section bellow.
-
-## Sample project
-
-This projects uses cocapods-keys to store secrets. It you don't have it installed yet please do it bu running:
-```
-gem update cocoapods-keys
-```
-
-Obs.: If you don't use RVM then please run the above command with ```sudo```.
-
-After that just run:
-```
-pod install
-```
-
-And fill the secrets when they are asked.
-
-At this point you should be able to build and run the sample project. Check ```AuthManager.swift``` for implementation details/
+* OAuth 2.0 token method: This is the recommended approach for production apps. Libraries like [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) and [OAuth2](https://github.com/p2/OAuth2) are recommended for this method.
 
 ## Featutes
 
 - [x] Callback based API support for iOS
 - [x] Swift 2 support
+- [x] OSX support
+- [x] tvOS support
+- [x] Carthage support
+- [ ] Linux support
 - [ ] RXSwift support
-- [ ] Tested on OSX 
-- [ ] tvOS support
-- [ ] Tested on Linux
-- [ ] Carthage support
-
 
 ## Coding style
 

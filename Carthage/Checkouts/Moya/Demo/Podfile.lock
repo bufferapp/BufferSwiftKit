@@ -1,0 +1,65 @@
+PODS:
+  - Alamofire (3.3.0)
+  - Moya (6.4.0):
+    - Moya/Core (= 6.4.0)
+  - Moya/Core (6.4.0):
+    - Alamofire (~> 3.0)
+    - Result (~> 2.0)
+  - Moya/ReactiveCocoa (6.4.0):
+    - Moya/Core
+    - ReactiveCocoa (~> 4.1)
+  - Moya/RxSwift (6.4.0):
+    - Moya/Core
+    - RxSwift (~> 2.0)
+  - Nimble (3.1.0)
+  - OHHTTPStubs (4.7.0):
+    - OHHTTPStubs/Default (= 4.7.0)
+  - OHHTTPStubs/Core (4.7.0)
+  - OHHTTPStubs/Default (4.7.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (4.7.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (4.7.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (4.7.0)
+  - Quick (0.9.0)
+  - ReactiveCocoa (4.1.0):
+    - ReactiveCocoa/UI (= 4.1.0)
+    - Result (~> 2.0)
+  - ReactiveCocoa/Core (4.1.0):
+    - ReactiveCocoa/no-arc
+    - Result (~> 2.0)
+  - ReactiveCocoa/no-arc (4.1.0):
+    - Result (~> 2.0)
+  - ReactiveCocoa/UI (4.1.0):
+    - ReactiveCocoa/Core
+    - Result (~> 2.0)
+  - Result (2.0.0)
+  - RxSwift (2.3.1)
+
+DEPENDENCIES:
+  - Moya (from `../`)
+  - Moya/ReactiveCocoa (from `../`)
+  - Moya/RxSwift (from `../`)
+  - Nimble
+  - OHHTTPStubs
+  - Quick
+
+EXTERNAL SOURCES:
+  Moya:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
+  Moya: 4d526954c8afd79820991393d40d7d8af756ceee
+  Nimble: 79d40f4d69d47314229bbabacaa02b8838c779b9
+  OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
+  Quick: 332eb1da73125a2106dd637424c803f2ae97e4a9
+  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
+
+COCOAPODS: 0.39.0
