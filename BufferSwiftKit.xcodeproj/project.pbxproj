@@ -115,7 +115,7 @@
 		57B519151CB9C1CD00079D35 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B519121CB9C1CD00079D35 /* ObjectMapper.framework */; };
 		57B519211CB9C86600079D35 /* BufferKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B519181CB9C86600079D35 /* BufferKitManager.swift */; };
 		57B519221CB9C86600079D35 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B519191CB9C86600079D35 /* Constants.swift */; };
-		57B519231CB9C86600079D35 /* MainHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B5191A1CB9C86600079D35 /* MainHUD.swift */; };
+		57B519231CB9C86600079D35 /* BufferSwiftKit.podspec in Sources */ = {isa = PBXBuildFile; fileRef = 57B5191A1CB9C86600079D35 /* BufferSwiftKit.podspec */; };
 		57B519241CB9C86600079D35 /* MenuHeaderCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B5191B1CB9C86600079D35 /* MenuHeaderCV.swift */; };
 		57B519251CB9C86600079D35 /* ProfileMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B5191C1CB9C86600079D35 /* ProfileMenuVC.swift */; };
 		57B519261CB9C86600079D35 /* QueueItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B5191D1CB9C86600079D35 /* QueueItemView.swift */; };
@@ -275,7 +275,7 @@
 		577C2C6B1CB44C7C007D24D9 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		577C2C741CB44C94007D24D9 /* BufferSwiftKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BufferSwiftKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		577C2C781CB44C94007D24D9 /* Info-OSX.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-OSX.plist"; sourceTree = "<group>"; };
-		578471401CB9577100A3B4E7 /* BufferSwiftKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BufferSwiftKit.podspec; path = Metadata/BufferSwiftKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		578471401CB9577100A3B4E7 /* BufferSwiftKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BufferSwiftKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		578471461CB95C5200A3B4E7 /* BufferSwiftKit iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BufferSwiftKit iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		578471481CB95C5200A3B4E7 /* BufferSwiftKit_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferSwiftKit_iOSTests.swift; sourceTree = "<group>"; };
 		5784714A1CB95C5200A3B4E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -331,7 +331,7 @@
 		57B519121CB9C1CD00079D35 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/tvOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		57B519181CB9C86600079D35 /* BufferKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferKitManager.swift; sourceTree = "<group>"; };
 		57B519191CB9C86600079D35 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		57B5191A1CB9C86600079D35 /* MainHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHUD.swift; sourceTree = "<group>"; };
+		57B5191A1CB9C86600079D35 /* BufferSwiftKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = BufferSwiftKit.podspec; path = ../BufferSwiftKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		57B5191B1CB9C86600079D35 /* MenuHeaderCV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHeaderCV.swift; sourceTree = "<group>"; };
 		57B5191C1CB9C86600079D35 /* ProfileMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMenuVC.swift; sourceTree = "<group>"; };
 		57B5191D1CB9C86600079D35 /* QueueItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueItemView.swift; sourceTree = "<group>"; };
@@ -740,7 +740,7 @@
 				57B519181CB9C86600079D35 /* BufferKitManager.swift */,
 				57B5192A1CB9C87100079D35 /* AuthManager.swift */,
 				57B519191CB9C86600079D35 /* Constants.swift */,
-				57B5191A1CB9C86600079D35 /* MainHUD.swift */,
+				57B5191A1CB9C86600079D35 /* BufferSwiftKit.podspec */,
 				57B519201CB9C86600079D35 /* UIUtilsExtensions.swift */,
 			);
 			name = Utils;
@@ -1265,7 +1265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57B519231CB9C86600079D35 /* MainHUD.swift in Sources */,
+				57B519231CB9C86600079D35 /* BufferSwiftKit.podspec in Sources */,
 				57B5192B1CB9C87100079D35 /* AuthManager.swift in Sources */,
 				57B519241CB9C86600079D35 /* MenuHeaderCV.swift in Sources */,
 				578471581CB95C8700A3B4E7 /* AppDelegate.swift in Sources */,
