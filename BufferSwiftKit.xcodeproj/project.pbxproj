@@ -157,6 +157,7 @@
 		57C43A961CBA91D000EB1798 /* ObjectMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 57C43A931CBA91D000EB1798 /* ObjectMapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57C43A971CBA920100EB1798 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C43A841CB9D93800EB1798 /* Result.framework */; };
 		57C43A991CBA920700EB1798 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 57C43A981CBA920700EB1798 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		57C4BE601CBC02D0007CB4A3 /* MainHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C4BE5F1CBC02D0007CB4A3 /* MainHUD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -369,6 +370,7 @@
 		57C43AA31CBA9CA800EB1798 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		57C43AA41CBA9CA800EB1798 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		57C43AA51CBA9CA800EB1798 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		57C4BE5F1CBC02D0007CB4A3 /* MainHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainHUD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -737,6 +739,7 @@
 		57C43AA81CBBDD9200EB1798 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				57C4BE5F1CBC02D0007CB4A3 /* MainHUD.swift */,
 				57B519181CB9C86600079D35 /* BufferKitManager.swift */,
 				57B5192A1CB9C87100079D35 /* AuthManager.swift */,
 				57B519191CB9C86600079D35 /* Constants.swift */,
@@ -1267,6 +1270,7 @@
 			files = (
 				57B519231CB9C86600079D35 /* BufferSwiftKit.podspec in Sources */,
 				57B5192B1CB9C87100079D35 /* AuthManager.swift in Sources */,
+				57C4BE601CBC02D0007CB4A3 /* MainHUD.swift in Sources */,
 				57B519241CB9C86600079D35 /* MenuHeaderCV.swift in Sources */,
 				578471581CB95C8700A3B4E7 /* AppDelegate.swift in Sources */,
 				57B519211CB9C86600079D35 /* BufferKitManager.swift in Sources */,
