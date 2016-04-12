@@ -116,6 +116,16 @@ We adhere to the [Raywenderlich Swift coding style](https://github.com/raywender
 
 Please visit the [CHANGELOG.md](CHANGELOG.md) file.
 
+## Going Forward
+
+We are always happy to talk shop, so feel free to give us a shout on Twitter:
+
++ Andy - [@ay8s](http://www.twitter.com/ay8s)
++ Jordan - [@jordanmorgan10](http://www.twitter.com/jordanmorgan10)
++ Humber -[@goku2](http://www.twitter.com/goku2)
+
+Or, hey - Wanna come join us!? [We're hiring](http://www.buffer.com/journey)!
+
 ## License
 
 BufferSwiftKit is released under the MIT license. See [LICENSE](LICENSE) for details.
