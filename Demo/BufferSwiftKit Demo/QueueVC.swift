@@ -18,6 +18,8 @@ class QueueVC: UIViewController {
 
     var updatePage: UpdatePage!
 
+    var tokenTextField: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,8 +69,9 @@ class QueueVC: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if AuthManager.sharedManager.authenticated {
-            MainHUD.showMsg("Fetching profiles")
-            BufferKitManager.sharedInstance.fetchProfiles()
+            self.fetchProfiles()
+        } else {
+            askForToken()
         }
     }
 
@@ -92,6 +95,40 @@ class QueueVC: UIViewController {
     func selectProfileAction(sender: UITabBarItem) {
         let profileMenuVC = ProfileMenuVC()
         presentViewController(UINavigationController(rootViewController: profileMenuVC), animated: true, completion: nil)
+    }
+
+    func fetchProfiles() {
+        MainHUD.showMsg("Fetching profiles")
+        BufferKitManager.sharedInstance.fetchProfiles()
+    }
+
+    func askForToken() {
+        let alert = UIAlertController(title: "Buffer API token", message: "Please provide a valid Buffer API token", preferredStyle: .Alert)
+
+        alert.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "Enter the API token"
+            textField.keyboardType = .Default
+            self.tokenTextField = textField
+        }
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (alertAction) in
+            if let text = self.tokenTextField.text {
+                if text.characters.count > 0 {
+                    AuthManager.sharedManager.accessToken = text
+                    self.fetchProfiles()
+                } else {
+                    self.showErrorMsg("Error", message: "The token length can't be 0", okHandler: { (alertAction) in
+                        self.askForToken()
+                    })
+                }
+            } else {
+                self.showErrorMsg("Error", message: "No token provided", okHandler: { (alertAction) in
+                    self.askForToken()
+                })
+            }
+        }))
+
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

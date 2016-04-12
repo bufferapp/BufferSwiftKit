@@ -14,13 +14,6 @@ class AuthManager {
         static let Token = "AuthManager.Token"
     }
 
-    enum AuthStatus {
-        case New
-        case InProgress
-        case Authenticated
-        case Failed
-    }
-
     static let sharedManager = AuthManager()
   
     var accessToken: String? {
@@ -32,20 +25,20 @@ class AuthManager {
         }
     }
 
-    private (set) var status: AuthStatus = .New
-
     var authenticated: Bool {
-        return status == .Authenticated
+        if let _ = self.accessToken {
+            return true
+        }
+        return false
     }
 
     private init() {
         if let _ = NSUserDefaults.standardUserDefaults().stringForKey(Keys.Token) {
-            status = .Authenticated
+
         }
     }
 
     func logout() {
         self.accessToken = nil
-        self.status = .New
     }
 }

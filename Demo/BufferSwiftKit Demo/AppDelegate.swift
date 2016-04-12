@@ -27,9 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         MainHUD.setup(queueVC.view)
 
-        Chameleon.setGlobalThemeUsingPrimaryColor(FlatNavyBlue(), withContentStyle: UIContentStyle.Contrast)
+        Chameleon.setGlobalThemeUsingPrimaryColor(FlatWhite(), withContentStyle: UIContentStyle.Contrast)
 
-        AuthManager.sharedManager.accessToken = "Insert token here"
+        // If you want to add the token in code uncomment the line bellow and change the string value
+        // AuthManager.sharedManager.accessToken = "Insert token here"
 
         window!.makeKeyAndVisible()
         
