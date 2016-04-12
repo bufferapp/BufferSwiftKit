@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
     s.name              = "BufferSwiftKit"
-    s.version           = "0.0.1"
+    s.version           = "0.1.0"
     s.summary           = "BufferSwiftKit is a Swift based SDK to access the Buffer API."
     s.homepage          = "https://github.com/bufferapp/BufferSwiftKit.git"
     s.license           = { :type => "MIT", :file => "LICENSE" }
-    s.author            = { "Buffer Inc." => "humber@buffer.com"}
+    s.author            = { "Humberto Aquino" => "humber@buffer.com", "Andrew Yates" => "andy@buffer.com", "Jordan Morgan" => "jordan@buffer.com" }
     s.source            = { :git => "https://github.com/bufferapp/BufferSwiftKit.git", :tag => s.version }
-    s.social_media_url  = "https://twitter.com/bufferdev"
+    s.social_media_url  = "https://twitter.com/bufferdevs"
 
     s.ios.deployment_target = "9.0"
     s.watchos.deployment_target = "2.0"
