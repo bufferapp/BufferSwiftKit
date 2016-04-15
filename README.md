@@ -81,7 +81,7 @@ BufferKitClient just needs a token to interact with the API. So, you could use t
 * Single token method: Is simpler and is preferred while prototyping your awesome app 🎉📱😄!
 * OAuth 2.0 token method: This is the recommended approach for production apps. Libraries like [OAuthSwift](https://github.com/OAuthSwift/OAuthSwift) and [OAuth2](https://github.com/p2/OAuth2) are recommended if you use this method.
 
-## Demo porject
+## Demo project
 
 To use the demo project you just have to open:
 
