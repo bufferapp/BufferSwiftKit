@@ -121,7 +121,7 @@ We are always happy to talk shop, so feel free to give us a shout on Twitter:
 
 + Andy - [@ay8s](http://www.twitter.com/ay8s)
 + Jordan - [@jordanmorgan10](http://www.twitter.com/jordanmorgan10)
-+ Humber -[@goku2](http://www.twitter.com/goku2)
++ Humber - [@goku2](http://www.twitter.com/goku2)
 
 Or, hey - Wanna come join us!? [We're hiring](http://www.buffer.com/journey)!
 
