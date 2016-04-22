@@ -89,7 +89,7 @@ To use the demo project you just have to open:
 open Demo/BufferSwiftKit\ Demo.xcworkspace
 ```
 
-And run it with cmd+r. The app will prompt for the Buffer APi token once.
+And run it with cmd+r. The app will prompt for the Buffer API token once.
 
 In case you want to provide the API token programmatically you can do that inside the AppDelegate file. The line to change will look like this:
 
