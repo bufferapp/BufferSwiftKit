@@ -16,9 +16,9 @@ The main goal is to provide a simple and easy interface to use Buffer in your iO
 
 let token = "...."
 
-self.bufferClient = MoyaBufferClient(token: token)
+let bufferClient = MoyaBufferClient(token: token)
 
-client.getProfiles({ (profiles) -> Void in
+bufferClient.getProfiles({ (profiles) -> Void in
     print("All right! You have \(profiles.count) profiles!")
 }, failure: { (error) -> Void in
     print(error)
