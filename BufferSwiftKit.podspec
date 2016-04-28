@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name              = "BufferSwiftKit"
-    s.version           = "0.1.1"
+    s.version           = "0.1.2"
     s.summary           = "BufferSwiftKit is a Swift based SDK to access the Buffer API."
     s.homepage          = "https://github.com/bufferapp/BufferSwiftKit.git"
     s.license           = { :type => "MIT", :file => "LICENSE" }
