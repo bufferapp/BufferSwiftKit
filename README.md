@@ -4,7 +4,7 @@ The main goal is to provide a simple and easy interface to use Buffer in your iO
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Cocoapods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org/)
 [![Platforms](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20watchos%7C%20tvos-lightgray.svg)]()
-[![GitHub release](https://img.shields.io/badge/release-0.1.1-blue.svg)]()
+[![GitHub release](https://img.shields.io/cocoapods/v/BufferSwiftKit.svg?style=flat)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
 ## Sample code
