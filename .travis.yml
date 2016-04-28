@@ -2,6 +2,6 @@ language: objective-c
 osx_image: xcode7.3
 deploy:
   provider: script
-  script: ./scripts/push.sh
+  script: travis_wait 30 ./scripts/push.sh
   on:
     tags: true
